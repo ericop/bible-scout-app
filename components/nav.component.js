@@ -1,0 +1,234 @@
+import BibleMediaService from '../services/bible-media.service.js'
+
+const NavComponent = () => {
+    let sidenav
+    let bibleService = BibleMediaService()
+    let readingProgress = { month: 1, day: 1 }
+    const updateReadingProgress = () => readingProgress = bibleService.getReadingProgress(m.route.get().split('/')[1])
+    const openSideNav = () => {
+        // //console.log('openSideNav before', sidenav)
+        sidenav.open()
+        // //console.log('openSideNav after', sidenav)
+
+    }
+    const closeSideNav = () => sidenav.close()
+    const getIconForCurrentRoute = () => {
+        switch (m.route.get().split('/')[1]) {
+            case 'law-and-prophets':
+                return 'receipt'
+            case 'wisdom':
+                return 'event_seat'
+            case 'gospels':
+                return 'games'
+            case 'epistles':
+                return 'mail'
+            case 'settings':
+                return 'settings'
+            case 'about':
+                return 'info'
+            case 'home':
+                return 'home'
+            default:
+                return 'import_contacts'
+        }
+    }
+
+    const kebabToCapitalizedTitle = (kebab) => kebab.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+
+    const isCurrentTopRoute = (route) => {
+        //console.log('route?', m.route.get().split('/'))
+        return m.route.get().split('/')[1] === route
+    }
+    return {
+        oncreate: () => {
+            sidenav = M.Sidenav.init(document.getElementById('side-nav'), { draggable: false, edge: 'left', isFixed: true })
+        },
+
+        view: () => {
+            return m('.whole-nav',
+
+                [
+                    m('.navbar-fixed',
+                        [
+                            m('nav.nav-extended.z-depth-3',
+                                [
+                                    m('#nav-top-row.nav-wrapper.teal.accent-3.z-depth-1',
+                                        [
+                                            m('span.brand-logo.right', [
+                                                m('span.brand-name', { onclick: openSideNav }, 'Bible Scout'),
+                                                m('i.material-icons.right', 'import_contacts')
+                                            ]),
+                                            m('ul#nav-big.left.hide-on-med-and-down',
+                                                [
+                                                    m('li',
+                                                        { class: isCurrentTopRoute('about') ? 'active' : '' },
+                                                        [m('a.navigation__link', {
+                                                            href: '#!/about',
+                                                            onclick: closeSideNav
+                                                        }, [
+                                                                m('i.material-icons', 'info')
+                                                            ]
+                                                        )]
+                                                    ),
+                                                    m('li',
+                                                        { class: isCurrentTopRoute('settings') ? 'active' : '' },
+                                                        [m('a.navigation__link', {
+                                                            href: '#!/settings',
+                                                            onclick: closeSideNav
+                                                        }, [
+                                                                m('i.material-icons', 'settings')
+                                                            ]
+                                                        )]
+                                                    ),
+                                                    m('li',
+                                                        { class: isCurrentTopRoute('law-and-prophets') ? 'active' : '' },
+                                                        [m('a.navigation__link', {
+                                                            href: '#!/law-and-prophets',
+                                                            onclick: closeSideNav
+                                                        },
+                                                            'Law and Prophets'
+                                                        )]
+                                                    ),
+                                                    m('li',
+                                                        { class: isCurrentTopRoute('wisdom') ? 'active' : '' },
+                                                        [m('a.navigation__link', {
+                                                            href: '#!/wisdom',
+                                                            onclick: closeSideNav
+                                                        },
+                                                            'Wisdom'
+                                                        )]
+                                                    ),
+                                                    m('li',
+                                                        { class: isCurrentTopRoute('gospels') ? 'active' : '' },
+                                                        [m('a.navigation__link', {
+                                                            href: '#!/gospels',
+                                                            onclick: closeSideNav
+                                                        },
+                                                            'Gospels'
+                                                        )]
+                                                    ),
+                                                    m('li',
+                                                        { class: isCurrentTopRoute('epistles') ? 'active' : '' },
+                                                        [m('a.navigation__link', {
+                                                            href: '#!/epistles',
+                                                            onclick: closeSideNav
+                                                        },
+                                                            'Epistles'
+                                                        )]
+                                                    )
+                                                ]
+                                            ),
+                                            m('ul#nav-mobile.left.show-on-small.show-on-medium.hide-on-large-only', [
+                                                m('li',
+                                                    [m('a.navigation__link', {
+                                                        onclick: openSideNav
+                                                    }, [
+                                                            m('i.material-icons', 'menu')
+                                                        ]
+                                                    )]
+                                                )
+                                            ]),
+
+
+                                        ]
+                                    ),
+
+                                    m('div.nav-wrapper.orange',
+                                        m('div.col.s12',
+                                            [
+                                                m('a.breadcrumb', [
+                                                    m('i.material-icons', getIconForCurrentRoute()),
+                                                    m('span', kebabToCapitalizedTitle(m.route.get().split('/')[1]))
+                                                ]),
+
+                                                m('a.breadcrumb', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
+                                                    `Month ${updateReadingProgress().month}`
+                                                ),
+                                                m('a.breadcrumb', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
+                                                    `Day ${updateReadingProgress().day}`
+                                                )
+
+                                            ]
+                                        )
+                                    )
+                                ]
+                            )
+                        ]
+                    ),
+                    m('ul.#side-nav.sidenav',
+                        [
+                            m('li',
+                                [m('a.navigation__link[href="#!/home"]', {
+                                    onclick: closeSideNav
+                                }, [
+                                        m('i.material-icons', 'home'),
+                                        m('span', 'Home')
+                                    ]
+                                )]
+                            ),
+                            m('li',
+                                [m('a.navigation__link[href="#!/law-and-prophets"]', {
+                                    onclick: closeSideNav
+                                }, [
+                                        m('i.material-icons', 'receipt'),
+                                        m('span', 'Law and Prophets')
+                                    ]
+                                )]
+                            ),
+                            m('li',
+                                [m('a.navigation__link[href="#!/wisdom"]',
+                                    {
+                                        onclick: closeSideNav
+                                    }, [
+                                        m('i.material-icons', 'event_seat'),
+                                        m('span', 'Wisdom')
+                                    ]
+                                )]
+                            ),
+                            m('li',
+                                [m('a.navigation__link[href="#!/gospels"]',
+                                    {
+                                        onclick: closeSideNav
+                                    }, [
+                                        m('i.material-icons', 'games'),
+                                        m('span', 'Gospels')
+                                    ]
+                                )]
+                            ),
+                            m('li',
+                                [m('a.navigation__link[href="#!/epistles"]',
+                                    {
+                                        onclick: closeSideNav
+                                    }, [
+                                        m('i.material-icons', 'mail'),
+                                        m('span', 'Epistles')
+                                    ]
+                                )]
+                            ),
+                            m('li',
+                                [m('a.navigation__link[href="#!/settings"]', {
+                                    onclick: closeSideNav
+                                }, [
+                                        m('i.material-icons', 'settings'),
+                                        m('span', 'Settings')
+                                    ]
+                                )]
+                            ),
+                            m('li',
+                                [m('a.navigation__link[href="#!/about"]', {
+                                    onclick: closeSideNav
+                                }, [
+                                        m('i.material-icons', 'info'),
+                                        m('span', 'About')
+                                    ]
+                                )]
+                            )
+                        ]
+                    )
+                ]
+            )
+        }
+    }
+}
+
+export default NavComponent

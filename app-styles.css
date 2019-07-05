@@ -1,0 +1,120 @@
+body {
+  background-color: #913f21;
+}
+
+main {
+  padding: 5.5rem 1rem 1rem 1rem;
+  min-height: 50rem;
+}
+
+.hide {
+  display: none !important;
+}
+
+/* .verse {
+  padding: 0rem 1rem;
+} */
+
+/* http://alexkatz.me/posts/building-a-custom-html5-audio-player-with-javascript/ */
+#timeline {
+  display: none;
+  /* width: 15rem;
+  height: 2rem;
+  margin-top: 2rem;
+  float: left;
+  border-radius: 1.5rem;
+  background: rgba(0, 0, 0, 0.3); */
+}
+#playhead {
+  display: none;
+  /* width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-top: 1px;
+  background: rgba(0, 0, 0, 1); */
+}
+/* https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/WebAudio_playbackRate_explained */
+
+.volume-container {
+  display: none;
+  width: 10rem;
+}
+
+.help-text {
+  padding: 0.5rem;
+}
+
+.mdl-spinner.mdl-spinner--single-color.mdl-js-spinner.is-active {
+  margin: 1rem;
+}
+
+.mdl-card-container {
+  display: flex;
+}
+
+.mdl-card {
+  min-width: 40%;
+  padding: 10px;
+  flex: 1;
+  margin: 10px;
+}
+
+#mp3-player {
+  margin-left: 1rem;
+}
+
+/* Uses a transparent header that draws on top of the layout's background */
+.bible-background {
+  background: url("../bible-open-to-john.jpg") center / cover;
+}
+
+.card-action a i.material-icons {
+  padding: 0rem 0.25rem -0.5rem 0rem;
+}
+
+.card-action a span.action-words {
+  padding: 0 0 1rem 0.5rem;
+  vertical-align: middle;
+}
+
+.card-actions button {
+  margin: 0.25rem;
+}
+
+#side-nav.sidenav > li > a.navigation__link:hover {
+  color: #ffab40;
+}
+#nav-top-row ul#nav-big.left.hide-on-med-and-down li.active {
+  background-color: #ff9800;
+  z-index: 500;
+  /* border-left: rgba(182, 109, 0, 0.884) 1px solid; */
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(182, 109, 0, 0.884);
+  box-shadow: 2px 3px 5px 0px rgba(182, 109, 0, 0.884);
+  box-shadow: 0 6px 1px 0 #ff9800, inset 2px 2px 2px 0 rgba(0,0,0,0.14), inset 1px 3px 1px -2px rgba(0,0,0,0.12); 
+  -webkit-box-shadow: 0 6px 1px 0 #ff9800, inset 2px 2px 2px 0 rgba(0,0,0,0.14), inset 1px 3px 1px -2px rgba(0,0,0,0.12); 
+}
+#nav-top-row {
+  z-index: 400;
+}
+
+.nav-wrapper.orange div.col.s12 a.breadcrumb > * {
+  padding-left: 0.5rem;
+}
+
+.verseChapter,
+.card-sub-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: initial;
+}
+
+.button-nav-group {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .card div.card-action a {
+    display: block;
+    padding-top: 1rem;
+  }
+}
