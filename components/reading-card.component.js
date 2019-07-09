@@ -159,7 +159,7 @@ const ReadingCardComponent = () => {
 
         view: () => {
             return m('.row', [
-                m('.col s12 m12', [
+                m('.col.s12.m12', [
                     m('.card', {
                         class: settingsService.getIsDarkMode() ? 'blue-grey darken-3' : 'white'
                     }, [
