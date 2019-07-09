@@ -47,7 +47,7 @@ const ReadingCardComponent = () => {
 
         bibleService.getText(bibleVerse, book, verseString)
             .then((data) => {
-                console.log('data',data)
+                console.log('data', data)
                 text = data.flat().map(item => {
                     return { chapter: item.chapter_id, verseNum: item.verse_id, text: item.verse_text, paragraphNum: item.paragraph_number }
                 })
@@ -161,94 +161,95 @@ const ReadingCardComponent = () => {
             return m('.row', [
                 m('.col s12 m12', [
                     m('.card', {
-                    class: settingsService.getIsDarkMode() ? 'blue-grey darken-3': 'white'
-                    },[
-                        m('.card-content', {
-                            class: settingsService.getIsDarkMode() ? 'white-text': ''
-                        },[
-                            m('span.card-title', bibleVerse),
-                            m('div', [
-                                m('audio#mp3-player', {
-                                    class: isLoadingAudioPath && !isLoading ? 'hide' : '',
-                                    controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
-                                    preload: true,
-                                    src: `${audioBaseUrl}${audioPath}`
-                                }),
-                                m('.row',
-                                    m('.col s12 m8', [
-                                        m('button.btn-floating.waves-effect.waves-light.blue',
+                        class: settingsService.getIsDarkMode() ? 'blue-grey darken-3' : 'white'
+                    }, [
+                            m('.card-content', {
+                                class: settingsService.getIsDarkMode() ? 'white-text' : ''
+                            }, [
+                                    m('span.card-title', bibleVerse),
+                                    m('div', [
+                                        m('audio#mp3-player', {
+                                            class: isLoadingAudioPath && !isLoading ? 'hide' : '',
+                                            controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
+                                            preload: true,
+                                            src: `${audioBaseUrl}${audioPath}`
+                                        }),
+                                        m('.row',
+                                            m('.col s12 m8', [
+                                                m('button.btn-floating.waves-effect.waves-light.blue',
+                                                    {
+                                                        disabled: isLoading,
+                                                        class: isPlayingAudio ? 'hide' : '',
+                                                        onclick: () => playAudio()
+                                                    },
+                                                    m('i.material-icons',
+                                                        'play_arrow'
+                                                    )),
+
+                                                m('button.btn-floating.waves-effect.waves-light.orange', {
+                                                    disabled: isLoading,
+                                                    class: isPlayingAudio ? '' : 'hide',
+                                                    onclick: () => pauseAudio()
+                                                },
+                                                    m('i.material-icons',
+                                                        'pause'
+                                                    )
+                                                ),
+                                                m('#timeline',
+                                                    m('#playhead')
+                                                ),
+                                                m('.volume-container', [
+                                                    m('i.material-icons',
+                                                        'volume'
+                                                    ),
+                                                    m('input.volume', {
+                                                        type: 'range',
+                                                        min: 0,
+                                                        max: 100,
+                                                        value: 50
+                                                    })
+                                                ])
+                                            ])
+                                        )
+
+                                    ]),
+                                    m('.progress', { class: !isLoading ? 'hide' : '' }, [
+                                        m('.indeterminate')
+                                    ]),
+                                    m('.bible-card-text'), text.map(v => {
+                                        return m('span.verse',
+                                            [
+                                                v.verseNum == 1 ? m('span', [m('br'), m('strong.verseChapter', `${v.chapter} `)]) : '',
+                                                m('sup.verseNum', `${v.verseNum} `),
+                                                v.text
+                                            ]
+                                        )
+                                    }),
+                                    m('form.card-actions.button-nav-group', [
+                                        m('button.waves-effect.waves-light.btn.amber.accent-3.blue-grey-text.text-darken-3',
                                             {
                                                 disabled: isLoading,
-                                                class: isPlayingAudio ? 'hide' : '',
-                                                onclick: () => playAudio()
-                                            },
-                                            m('i.material-icons',
-                                                'play_arrow'
-                                            )),
+                                                class: isVeryBeginning() ? 'hide' : '',
+                                                onclick: () => decrement()
+                                            }, `Previous Reading`),
+                                        m('button.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-3',
+                                            {
+                                                disabled: isLoading,
+                                                onclick: () => increment()
+                                            }, `Next Reading`)
 
-                                        m('button.btn-floating.waves-effect.waves-light.orange', {
-                                            disabled: isLoading,
-                                            class: isPlayingAudio ? '' : 'hide',
-                                            onclick: () => pauseAudio()
-                                        },
-                                            m('i.material-icons',
-                                                'pause'
-                                            )
-                                        ),
-                                        m('#timeline',
-                                            m('#playhead')
-                                        ),
-                                        m('.volume-container', [
-                                            m('i.material-icons',
-                                                'volume'
-                                            ),
-                                            m('input.volume', {
-                                                type: 'range',
-                                                min: 0,
-                                                max: 100,
-                                                value: 50
-                                            })
-                                        ])
                                     ])
-                                )
-
-                            ]),
-                            m('.progress', { class: !isLoading ? 'hide' : '' }, [
-                                m('.indeterminate')
-                            ]),
-                            m('.bible-card-text'), text.map(v => {
-                                return m('span.verse',
-                                    [
-                                        v.verseNum == 1 ? m('span', [m('br'), m('strong.verseChapter', `${v.chapter} `)]) : '',
-                                        m('sup.verseNum', `${v.verseNum} `),
-                                        v.text
-                                    ]
-                                )
-                            }),
-                            m('form.card-actions.button-nav-group', [
-                                m('button.waves-effect.waves-light.btn.amber.accent-3',
-                                    {
-                                        disabled: isLoading,
-                                        class: isVeryBeginning() ? 'hide' : '',
-                                        onclick: () => decrement()
-                                    }, `Previous Reading`),
-                                m('button.waves-effect.waves-light.btn.amber.accent-4',
-                                    {
-                                        disabled: isLoading,
-                                        onclick: () => increment()
-                                    }, `Next Reading`)
-
-                            ])
-                        ]),
-                        m('.card-action',
-                            m('a', {
-                                href: '#!/home'
-                            }, [
-                                    m('i.material-icons', 'home'),
-                                    m('span.action-words', 'Back Home')
-                                ])
-                        )
-                    ])
+                                ]),
+                            m('.card-action',
+                                m('a', {
+                                    class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-3',
+                                    href: '#!/home'
+                                }, [
+                                        m('i.material-icons', 'home'),
+                                        m('span.action-words', 'Back Home')
+                                    ])
+                            )
+                        ])
                 ])
             ])
         }

@@ -55,7 +55,7 @@ const SettingsComponent = () => {
                                         )
                                     ),
                                     m('br'),
-                                    m('button.btn-small.waves-effect.waves-light.orange', {
+                                    m('button.btn-small.waves-effect.waves-light.orange.blue-grey-text.text-darken-3', {
                                         onclick: () => clearReadingProgress(),
                                         disabled: (isReadingProgressCleared ? 'true' : '')
                                     }, 'Clear Reading Progress')
@@ -64,6 +64,7 @@ const SettingsComponent = () => {
                             ]),
                             m('.card-action',
                                 m('a', {
+                                    class: getIsDarkModePrivate() ? 'orange-text' : 'blue-grey-text text-darken-3',
                                     href: '#!/home'
                                 }, [
                                         m('i.material-icons', 'home'),
