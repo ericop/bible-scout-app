@@ -117,4 +117,12 @@ main {
     display: block;
     padding-top: 1rem;
   }
+
+  .nav-wrapper.orange a.breadcrumb span {
+    display:inline-block;
+    max-width: 9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

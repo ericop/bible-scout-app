@@ -133,7 +133,7 @@ const NavComponent = () => {
                                         ]
                                     ),
 
-                                    m('div.nav-wrapper.orange',
+                                    m('div.nav-wrapper.nav-with-breadcrumb.orange',
                                         m('div.col.s12',
                                             [
                                                 m('a.breadcrumb', [
@@ -142,10 +142,10 @@ const NavComponent = () => {
                                                 ]),
 
                                                 m('a.breadcrumb', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
-                                                    `Month ${updateReadingProgress().month}`
+                                                    m('span', `Month ${updateReadingProgress().month}`)
                                                 ),
                                                 m('a.breadcrumb', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
-                                                    `Day ${updateReadingProgress().day}`
+                                                    m('span', `Day ${updateReadingProgress().day}`)
                                                 )
 
                                             ]

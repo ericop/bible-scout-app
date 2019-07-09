@@ -82,7 +82,7 @@ const BibleMediaService = () => {
 
                 return m.request({
                     method: 'GET',
-                    data: { urlText: urlText, code: azureCodeKey },
+                    params: { urlText: urlText, code: azureCodeKey },
                     url: azureUrl
                 })
             }
@@ -98,7 +98,7 @@ const BibleMediaService = () => {
                 promiseArray.push(m.request({
                     method: 'GET',
                     url: azureUrl,
-                    data: {
+                    params: {
                         urlText: `${baseUrl}/text/verse?reply=json&v=2&dam_id=${bibleVersion}&book_id=${book}&chapter_id=${chapter}`,
                         code: azureCodeKey
                     }
@@ -119,7 +119,7 @@ const BibleMediaService = () => {
                 method: 'GET',
 
                 url: azureUrl,
-                data: {
+                params: {
                     urlText: `${baseUrl}/audio/location?protocol=http&reply=json&v=2`,
                     code: azureCodeKey
                 }
@@ -135,7 +135,7 @@ const BibleMediaService = () => {
             return m.request({
                 method: 'GET',
                 url: azureUrl,
-                data: {
+                params: {
                     urlText: `${baseUrl}/audio/path?dam_id=${bibleVersion}&book_id=${book}&v=2&chapter_id=${verseObj.firstChapter}`,
                     code: azureCodeKey
                 }
