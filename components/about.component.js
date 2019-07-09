@@ -55,7 +55,7 @@ const AboutComponent = () => {
                                         ),
 
                                         m('h4.card-sub-heading', 'Report An Issue'),
-                                        m('h6', 'To ', m('a[href="https://www.digitalbibleplatform.com/about"]', 'Digital Bible Platform'), ' for partnering with this app and giving us access to the Bible in text and audio formats.'
+                                        m('h6', 'Having problems using Bible Scout or want to give a suggestion? Add an ', m('a[href="https://github.com/ericop/bible-scout-app/issues"]', 'issue'), ' for me on GitHub. - EricOP'
                                         ),
 
                                     ]
