@@ -120,6 +120,10 @@ main {
   z-index: 400;
 }
 
+.breadcrumb::before {
+  color: #37474f;
+}
+
 .nav-wrapper.orange div.col.s12 a.breadcrumb > * {
   padding-left: 0.5rem;
 }

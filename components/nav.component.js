@@ -54,7 +54,7 @@ const NavComponent = () => {
                                 [
                                     m('#nav-top-row.nav-wrapper.teal.accent-3.z-depth-1',
                                         [
-                                            m('span.brand-logo.right', [
+                                            m('span.brand-logo.right.blue-grey-text.text-darken-3', [
                                                 m('span.brand-name', { onclick: openSideNav }, 'Bible Scout'),
                                                 m('i.material-icons.right', 'import_contacts')
                                             ]),
@@ -62,7 +62,7 @@ const NavComponent = () => {
                                                 [
                                                     m('li',
                                                         { class: isCurrentTopRoute('about') ? 'active' : '' },
-                                                        [m('a.navigation__link', {
+                                                        [m('a.navigation__link.blue-grey-text.text-darken-3', {
                                                             href: '#!/about',
                                                             onclick: closeSideNav
                                                         }, [
@@ -72,7 +72,7 @@ const NavComponent = () => {
                                                     ),
                                                     m('li',
                                                         { class: isCurrentTopRoute('settings') ? 'active' : '' },
-                                                        [m('a.navigation__link', {
+                                                        [m('a.navigation__link.blue-grey-text.text-darken-3', {
                                                             href: '#!/settings',
                                                             onclick: closeSideNav
                                                         }, [
@@ -82,7 +82,7 @@ const NavComponent = () => {
                                                     ),
                                                     m('li',
                                                         { class: isCurrentTopRoute('law-and-prophets') ? 'active' : '' },
-                                                        [m('a.navigation__link', {
+                                                        [m('a.navigation__link.blue-grey-text.text-darken-3', {
                                                             href: '#!/law-and-prophets',
                                                             onclick: closeSideNav
                                                         },
@@ -91,7 +91,7 @@ const NavComponent = () => {
                                                     ),
                                                     m('li',
                                                         { class: isCurrentTopRoute('wisdom') ? 'active' : '' },
-                                                        [m('a.navigation__link', {
+                                                        [m('a.navigation__link.blue-grey-text.text-darken-3', {
                                                             href: '#!/wisdom',
                                                             onclick: closeSideNav
                                                         },
@@ -100,7 +100,7 @@ const NavComponent = () => {
                                                     ),
                                                     m('li',
                                                         { class: isCurrentTopRoute('gospels') ? 'active' : '' },
-                                                        [m('a.navigation__link', {
+                                                        [m('a.navigation__link.blue-grey-text.text-darken-3', {
                                                             href: '#!/gospels',
                                                             onclick: closeSideNav
                                                         },
@@ -109,7 +109,7 @@ const NavComponent = () => {
                                                     ),
                                                     m('li',
                                                         { class: isCurrentTopRoute('epistles') ? 'active' : '' },
-                                                        [m('a.navigation__link', {
+                                                        [m('a.navigation__link.blue-grey-text.text-darken-3', {
                                                             href: '#!/epistles',
                                                             onclick: closeSideNav
                                                         },
@@ -120,7 +120,7 @@ const NavComponent = () => {
                                             ),
                                             m('ul#nav-mobile.left.show-on-small.show-on-medium.hide-on-large-only', [
                                                 m('li',
-                                                    [m('a.navigation__link', {
+                                                    [m('a.navigation__link.blue-grey-text.text-darken-3', {
                                                         onclick: openSideNav
                                                     }, [
                                                             m('i.material-icons', 'menu')
@@ -136,15 +136,15 @@ const NavComponent = () => {
                                     m('div.nav-wrapper.nav-with-breadcrumb.orange',
                                         m('div.col.s12',
                                             [
-                                                m('a.breadcrumb', [
+                                                m('a.breadcrumb.blue-grey-text.text-darken-3', [
                                                     m('i.material-icons', getIconForCurrentRoute()),
                                                     m('span', kebabToCapitalizedTitle(m.route.get().split('/')[1]))
                                                 ]),
 
-                                                m('a.breadcrumb', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
+                                                m('a.breadcrumb.blue-grey-text.text-darken-3', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
                                                     m('span', `Month ${updateReadingProgress().month}`)
                                                 ),
-                                                m('a.breadcrumb', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
+                                                m('a.breadcrumb.blue-grey-text.text-darken-3', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
                                                     m('span', `Day ${updateReadingProgress().day}`)
                                                 )
 

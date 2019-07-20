@@ -17,24 +17,28 @@ const HomeComponent = () => {
                             ]),
                         m('.card-action', [
                             m('a', {
+                                class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-3',
                                 href: '#!/law-and-prophets'
                             }, [
                                     m('i.material-icons', 'receipt'),
                                     m('span.action-words', 'Law and Prophets')
                                 ]),
                             m('a', {
+                                class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-3',
                                 href: '#!/wisdom'
                             }, [
                                     m('i.material-icons', 'event_seat'),
                                     m('span.action-words', 'Wisdom')
                                 ]),
                             m('a', {
+                                class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-3',
                                 href: '#!/gospels'
                             }, [
                                     m('i.material-icons', 'games'),
                                     m('span.action-words', 'Gospels')
                                 ]),
                             m('a.', {
+                                class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-3',
                                 href: '#!/epistles'
                             }, [
                                     m('i.material-icons', 'mail'),
