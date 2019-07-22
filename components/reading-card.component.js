@@ -176,7 +176,7 @@ const ReadingCardComponent = () => {
                                         }),
                                         m('.row',
                                             m('.col s12 m8', [
-                                                m('button.btn-floating.waves-effect.waves-light.blue',
+                                                m('button.btn-floating.waves-effect.waves-light.darken-4',
                                                     {
                                                         disabled: isLoading,
                                                         class: isPlayingAudio ? 'hide' : '',
@@ -186,7 +186,7 @@ const ReadingCardComponent = () => {
                                                         'play_arrow'
                                                     )),
 
-                                                m('button.btn-floating.waves-effect.waves-light.orange', {
+                                                m('button.btn-floating.waves-effect.waves-light.orange.darken-4', {
                                                     disabled: isLoading,
                                                     class: isPlayingAudio ? '' : 'hide',
                                                     onclick: () => pauseAudio()
@@ -226,13 +226,13 @@ const ReadingCardComponent = () => {
                                         )
                                     }),
                                     m('form.card-actions.button-nav-group', [
-                                        m('button.waves-effect.waves-light.btn.amber.accent-3.blue-grey-text.text-darken-3',
+                                        m('button.waves-effect.waves-light.btn.amber.accent-3.blue-grey-text.text-darken-4',
                                             {
                                                 disabled: isLoading,
                                                 class: isVeryBeginning() ? 'hide' : '',
                                                 onclick: () => decrement()
                                             }, `Previous Reading`),
-                                        m('button.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-3',
+                                        m('button.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
                                             {
                                                 disabled: isLoading,
                                                 onclick: () => increment()
@@ -242,7 +242,7 @@ const ReadingCardComponent = () => {
                                 ]),
                             m('.card-action',
                                 m('a', {
-                                    class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-3',
+                                    class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-4',
                                     href: '#!/home'
                                 }, [
                                         m('i.material-icons', 'home'),
