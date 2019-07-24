@@ -60,7 +60,7 @@ const SettingsComponent = () => {
                                                 m('.input-field.inline',
                                                     [
                                                     m('i.material-icons.prefix','alarm'),
-                                                    m('input#reminder-time.validate[disabled][type="time"]'),
+                                                    m('input#reminder-time.validate[disabled][type="time"][value="07:30"]'),
                                                     m('label[for="reminder-time"]', 
                                                         'Time'
                                                     ),
