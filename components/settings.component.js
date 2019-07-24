@@ -51,7 +51,7 @@ const SettingsComponent = () => {
                                         disabled: (isReadingProgressCleared ? 'true' : '')
                                     }, 'Clear Reading Progress'),
                                     m('br'),
-                                    m('.card-title','Work In Progress Settings'),
+                                    m('.card-title', 'Work In Progress Settings'),
                                     m('.switch',
                                         m('label',
                                             [
@@ -62,19 +62,19 @@ const SettingsComponent = () => {
                                             ]
                                         )
                                     ),
-                                    m('.row', 
+                                    m('.row',
                                         m('.col.s12',
                                             [
                                                 m('.input-field.inline',
                                                     [
-                                                    m('i.material-icons.prefix','alarm'),
-                                                    m('input#reminder-time.validate[disabled][type="time"][value="07:30"]'),
-                                                    m('label[for="reminder-time"]', 
-                                                        'Time'
-                                                    ),
-                                                    m('span.helper-text[data-error="wrong"][data-success="right"]', 
-                                                        'Should be a proper time'
-                                                    )]
+                                                        m('i.material-icons.prefix', 'alarm'),
+                                                        m('input#reminder-time.validate[disabled][type="time"][value="07:30"]'),
+                                                        m('label[for="reminder-time"]',
+                                                            'Time'
+                                                        ),
+                                                        m('span.helper-text[data-error="wrong"][data-success="right"]',
+                                                            'Should be a proper time'
+                                                        )]
                                                 )
                                             ]
                                         )
