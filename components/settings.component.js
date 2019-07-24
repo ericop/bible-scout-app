@@ -44,6 +44,12 @@ const SettingsComponent = () => {
                                             ]
                                         )
                                     ),
+                                    m('br'),
+                                    m('button.btn-small.waves-effect.waves-light.orange.blue-grey-text.text-darken-4', {
+                                        onclick: () => clearReadingProgress(),
+                                        disabled: (isReadingProgressCleared ? 'true' : '')
+                                    }, 'Clear Reading Progress'),
+                                    m('h4','Work In Progress Settings'),
                                     m('.switch',
                                         m('label',
                                             [
@@ -80,12 +86,7 @@ const SettingsComponent = () => {
                                                 'on'
                                             ]
                                         )
-                                    ),
-                                    m('br'),
-                                    m('button.btn-small.waves-effect.waves-light.orange.blue-grey-text.text-darken-4', {
-                                        onclick: () => clearReadingProgress(),
-                                        disabled: (isReadingProgressCleared ? 'true' : '')
-                                    }, 'Clear Reading Progress')
+                                    )
 
                                 ]
                             ]),
