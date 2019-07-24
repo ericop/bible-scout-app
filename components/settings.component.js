@@ -45,6 +45,7 @@ const SettingsComponent = () => {
                                         )
                                     ),
                                     m('br'),
+                                    m('br'),
                                     m('button.btn-small.waves-effect.waves-light.orange.blue-grey-text.text-darken-4', {
                                         onclick: () => clearReadingProgress(),
                                         disabled: (isReadingProgressCleared ? 'true' : '')
