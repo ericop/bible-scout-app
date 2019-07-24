@@ -34,7 +34,7 @@ const SettingsComponent = () => {
                                         m('label',
                                             [
                                                 'Dark Mode: off',
-                                                m('input[type=checkbox]', {
+                                                m('input[type="checkbox"]', {
                                                     checked: getIsDarkModePrivate(),
                                                     onclick: () => getIsDarkModePrivate() ? setColorMore('white') : setColorMore('dark')
 
@@ -48,7 +48,7 @@ const SettingsComponent = () => {
                                         m('label',
                                             [
                                                 'Daily Reminders: off',
-                                                m('input[disabled][type='checkbox']'),
+                                                m('input[disabled][type="checkbox"]'),
                                                 m('span.lever'),
                                                 'on'
                                             ]
@@ -60,11 +60,11 @@ const SettingsComponent = () => {
                                                 m('.input-field.inline',
                                                     [
                                                     m('i.material-icons.prefix','alarm'),
-                                                    m('input#reminder-time.validate[disabled][type='time']'),
-                                                    m('label[for='reminder-time']', 
+                                                    m('input#reminder-time.validate[disabled][type="time"]'),
+                                                    m('label[for="reminder-time"]', 
                                                         'Time'
                                                     ),
-                                                    m('span.helper-text[data-error='wrong'][data-success='right']', 
+                                                    m('span.helper-text[data-error="wrong"][data-success="right"]', 
                                                         'Should be a proper time'
                                                     )]
                                                 )
@@ -75,7 +75,7 @@ const SettingsComponent = () => {
                                         m('label',
                                             [
                                                 'Auto-Play Audio: off',
-                                                m('input[disabled][type='checkbox']'),
+                                                m('input[disabled][type="checkbox"]'),
                                                 m('span.lever'),
                                                 'on'
                                             ]
