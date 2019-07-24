@@ -63,21 +63,21 @@ const SettingsComponent = () => {
                                                 'on'
                                             ]
                                         )
-                                    )
-                                    m("div.row", 
+                                    ),
+                                    m(".row", 
                                         m(".col.s12",
                                             [
-                                            "This is an inline input field:",
-                                            m("div.input-field.inline",
-                                                [
-                                                m("input.validate[id='reminder-time'][type='time']"),
-                                                m("label[for='reminder-time']", 
-                                                    "Time"
-                                                ),
-                                                m("span.helper-text[data-error='wrong'][data-success='right']", 
-                                                    "Should be a proper time"
-                                                )]
-                                            )]
+                                                m(".input-field.inline",
+                                                    [
+                                                    m("input.validate[id='reminder-time'][type='time']"),
+                                                    m("label[for='reminder-time']", 
+                                                        "Time"
+                                                    ),
+                                                    m("span.helper-text[data-error='wrong'][data-success='right']", 
+                                                        "Should be a proper time"
+                                                    )]
+                                                )
+                                            ]
                                         )
                                     ),
                                     m('.switch',
