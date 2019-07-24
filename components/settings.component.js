@@ -49,7 +49,8 @@ const SettingsComponent = () => {
                                         onclick: () => clearReadingProgress(),
                                         disabled: (isReadingProgressCleared ? 'true' : '')
                                     }, 'Clear Reading Progress'),
-                                    m('h4','Work In Progress Settings'),
+                                    m('br'),
+                                    m('.card-title','Work In Progress Settings'),
                                     m('.switch',
                                         m('label',
                                             [
