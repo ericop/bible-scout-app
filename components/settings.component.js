@@ -47,6 +47,42 @@ const SettingsComponent = () => {
                                     m('.switch',
                                         m('label',
                                             [
+                                                'Daily Reminders: off',
+                                                m('input[disabled][type="checkbox"]'),
+                                                m('span.lever'),
+                                                'on'
+                                            ]
+                                        )
+                                    ),
+                                    m('.switch',
+                                        m('label',
+                                            [
+                                                'Daily Reminders: off',
+                                                m('input[disabled][type="checkbox"]'),
+                                                m('span.lever'),
+                                                'on'
+                                            ]
+                                        )
+                                    )
+                                    m("div.row", 
+                                        m(".col.s12",
+                                            [
+                                            "This is an inline input field:",
+                                            m("div.input-field.inline",
+                                                [
+                                                m("input.validate[id='reminder-time'][type='time']"),
+                                                m("label[for='reminder-time']", 
+                                                    "Time"
+                                                ),
+                                                m("span.helper-text[data-error='wrong'][data-success='right']", 
+                                                    "Should be a proper time"
+                                                )]
+                                            )]
+                                        )
+                                    ),
+                                    m('.switch',
+                                        m('label',
+                                            [
                                                 'Auto-Play Audio: off',
                                                 m('input[disabled][type="checkbox"]'),
                                                 m('span.lever'),
