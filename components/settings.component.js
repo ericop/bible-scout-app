@@ -48,33 +48,24 @@ const SettingsComponent = () => {
                                         m('label',
                                             [
                                                 'Daily Reminders: off',
-                                                m('input[disabled][type="checkbox"]'),
+                                                m('input[disabled][type='checkbox']'),
                                                 m('span.lever'),
                                                 'on'
                                             ]
                                         )
                                     ),
-                                    m('.switch',
-                                        m('label',
+                                    m('.row', 
+                                        m('.col.s12',
                                             [
-                                                'Daily Reminders: off',
-                                                m('input[disabled][type="checkbox"]'),
-                                                m('span.lever'),
-                                                'on'
-                                            ]
-                                        )
-                                    ),
-                                    m(".row", 
-                                        m(".col.s12",
-                                            [
-                                                m(".input-field.inline",
+                                                m('.input-field.inline',
                                                     [
-                                                    m("input.validate[id='reminder-time'][type='time']"),
-                                                    m("label[for='reminder-time']", 
-                                                        "Time"
+                                                    m('i.material-icons.prefix','alarm'),
+                                                    m('input#reminder-time.validate[disabled][type='time']'),
+                                                    m('label[for='reminder-time']', 
+                                                        'Time'
                                                     ),
-                                                    m("span.helper-text[data-error='wrong'][data-success='right']", 
-                                                        "Should be a proper time"
+                                                    m('span.helper-text[data-error='wrong'][data-success='right']', 
+                                                        'Should be a proper time'
                                                     )]
                                                 )
                                             ]
@@ -84,7 +75,7 @@ const SettingsComponent = () => {
                                         m('label',
                                             [
                                                 'Auto-Play Audio: off',
-                                                m('input[disabled][type="checkbox"]'),
+                                                m('input[disabled][type='checkbox']'),
                                                 m('span.lever'),
                                                 'on'
                                             ]
