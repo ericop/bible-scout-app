@@ -147,7 +147,7 @@ main {
 
   .nav-wrapper.orange a.breadcrumb span {
     display:inline-block;
-    max-width: 6.5rem;
+    max-width: 5.8rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
