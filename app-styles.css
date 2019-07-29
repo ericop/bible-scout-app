@@ -144,10 +144,13 @@ main {
     display: block;
     padding-top: 1rem;
   }
+  .nav-extended .nav-wrapper.orange {
+    height: 2rem;
 
+  }
   .nav-wrapper.orange a.breadcrumb span {
     display:inline-block;
-    max-width: 5.8rem;
+    max-width: 6.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
