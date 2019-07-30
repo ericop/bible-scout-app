@@ -3,6 +3,7 @@
 const CACHE = 'pwabuilder-precache'
 const precacheFiles = [
     /* Add an array of files to precache for your app */
+    '/index.html'
 ]
 
 self.addEventListener('install', function (event) {
@@ -44,40 +45,35 @@ self.addEventListener('fetch', function (event) {
 
                 return response
             },
-            function () {
+            async function () {
                 // The response was not found in the cache so we look for it on the server
-                return fetch(event.request)
-                    .then(function (response) {
-                        // If request was success, add or update it in the cache
-                        event.waitUntil(updateCache(event.request, response.clone()))
-
-                        return response
-                    })
-                    .catch(function (error) {
-                        console.log('[PWA Builder] Network request failed and no cache.' + error)
-                    })
+                try {
+                    const response = await fetch(event.request);
+                    // If request was success, add or update it in the cache
+                    event.waitUntil(updateCache(event.request, response.clone()));
+                    return response;
+                }
+                catch (error) {
+                    console.log('[PWA Builder] Network request failed and no cache.' + error);
+                }
             }
         )
     )
 })
 
-function fromCache(request) {
+async function fromCache(request) {
     // Check to see if you have it in the cache
     // Return response
     // If not in the cache, then return
-    return caches.open(CACHE).then(function (cache) {
-        return cache.match(request).then(function (matching) {
-            if (!matching || matching.status === 404) {
-                return Promise.reject('no-match')
-            }
-
-            return matching
-        })
-    })
+    const cache = await caches.open(CACHE);
+    const matching = await cache.match(request);
+    if (!matching || matching.status === 404) {
+        return Promise.reject('no-match');
+    }
+    return matching;
 }
 
-function updateCache(request, response) {
-    return caches.open(CACHE).then(function (cache) {
-        return cache.put(request, response)
-    })
+async function updateCache(request, response) {
+    const cache = await caches.open(CACHE);
+    return cache.put(request, response);
 }
