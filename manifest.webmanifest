@@ -1,0 +1,24 @@
+{"dir" : "ltr",
+    "lang" : "en",
+    "name" : "Bible Scout: Finding your way through the scriptures one reading at a time",
+    "scope" : "/",
+    "display" : "standalone",
+    "start_url" : "https://biblescout.app/",
+    "short_name" : "Bible Scout",
+    "theme_color" : "transparent",
+    "description" : "The Bible Scout App was created to help you scout (to examine, seek and observe) what is in the Holy Bible. It leads you to read through the Bible using a few different reading plans, and to support hundreds of global languages. Your reading progress will be tracked only on your local device, so no accounts are needed, allowing users from around the world anonymous access to the tool in a way that protect their privacy.",
+    "orientation" : "portrait",
+    "background_color" : "#1DE9B6",
+    "related_applications" : "",
+    "prefer_related_applications" : "false",
+    "generated" : "true",
+    "icons" : [
+        {
+            "src": "https://biblescout.app/favicon.ico",
+            "sizes": "16x16 32x32"
+        },
+        {
+            "src": "https://biblescout.app/favicon-32.png",
+            "sizes": "32x32"
+        }
+    ]}
