@@ -1,5 +1,6 @@
 import SettingsComponent from '../components/settings.component.js'
 
+
 const AboutComponent = () => {
     let settingsService = SettingsComponent()
     
@@ -62,7 +63,7 @@ const AboutComponent = () => {
                                 ]),
                                 m('.card-action',
                                     m('a', {
-                                        class: getIsDarkModePrivate() ? 'orange-text' : 'blue-grey-text text-darken-4',
+                                        class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-4',
                                         href: '#!/home'
                                     }, [
                                             m('i.material-icons', 'home'),
