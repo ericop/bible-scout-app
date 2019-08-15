@@ -50,7 +50,7 @@ const NavComponent = () => {
                 [
                     m('.navbar-fixed',
                         [
-                            m('nav.nav-extended.z-depth-3',
+                            m('nav.nav-second-row.z-depth-3',
                                 [
                                     m('#nav-top-row.nav-wrapper.teal.accent-3.z-depth-1',
                                         [
@@ -133,8 +133,8 @@ const NavComponent = () => {
                                         ]
                                     ),
 
-                                    m('div.nav-wrapper.nav-with-breadcrumb.orange',
-                                        m('div.col.s12',
+                                    m('.nav-wrapper.nav-with-breadcrumb.orange',
+                                        m('.col.s12',
                                             [
                                                 m('a.breadcrumb.blue-grey-text.text-darken-4', [
                                                     m('i.material-icons', getIconForCurrentRoute()),

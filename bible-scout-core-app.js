@@ -19,6 +19,15 @@ const LayoutComponent = {
         ])
     }
 }
+window.addEventListener('scroll', (e) => {
+    const secondRowNavClasses = ' nav-wrapper nav-with-breadcrumb orange'
+    const secondRow = document.querySelector(secondRowNavClasses.split(' ').join('.'))
+    const secondRowClassValue = window.scrollY > 50
+        ? `${secondRowNavClasses} is-scrolled-down z-depth-3`
+        : secondRowNavClasses
+
+    secondRow.setAttribute('class', secondRowClassValue)
+})
 
 m.route(document.getElementById('app'), '/home',
     {
