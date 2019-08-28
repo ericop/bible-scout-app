@@ -113,6 +113,8 @@ const BibleMediaService = () => {
             return djPlan.months.find(m => m.monthNum === month).readings.find(v => v.day === day && v.type === type)
         },
 
+        getAudioFile: (httpUrl) => `${azureUrl}?urlText=${encodeURIComponent(httpUrl)}&code=${encodeURIComponent(azureCodeKey)}`,
+
         getAudioServerPath: () => {
 
             return m.request({
@@ -140,16 +142,9 @@ const BibleMediaService = () => {
                     code: azureCodeKey
                 }
             })
-        },
-
-        getAudioFile: (httpUrl) => {
-            //console.log('getAudioFile > httpUrl', httpUrl)
-            var azureMp3Url = `${azureUrl}?urlText=${encodeURIComponent(httpUrl)}&code=${encodeURIComponent(azureCodeKey)}`
-            //console.log('azureMp3Url', azureMp3Url)
-            return azureMp3Url
         }
-    }
 
+    }
 }
 
 export default BibleMediaService
