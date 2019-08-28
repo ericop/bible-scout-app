@@ -2,7 +2,6 @@ var CACHE = 'network-or-cache'
 // from https://serviceworke.rs/strategy-network-or-cache_service-worker_doc.html
 self.addEventListener('install', function (evt) {
   console.log('The service worker is being installed.')
-
   evt.waitUntil(preCache())
 })
 
@@ -16,8 +15,7 @@ self.addEventListener('fetch', function (evt) {
 function preCache() {
   return caches.open(CACHE).then(function (cache) {
     return cache.addAll([
-      './index.html',
-      './third-party'
+      './index.html'
     ])
   })
 }
