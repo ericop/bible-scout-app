@@ -172,7 +172,7 @@ const ReadingCardComponent = () => {
                                             class: isLoadingAudioPath && !isLoading ? 'hide' : '',
                                             controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
                                             preload: true,
-                                            src: `${audioBaseUrl}${audioPath}`
+                                            src: bibleService.getAudioFile(`${audioBaseUrl}${audioPath}`)
                                         }),
                                         m('.row',
                                             m('.col s12 m8', [

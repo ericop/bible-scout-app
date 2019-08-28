@@ -140,7 +140,13 @@ const BibleMediaService = () => {
                     code: azureCodeKey
                 }
             })
+        },
 
+        getAudioFile: (httpUrl) => {
+            //console.log('getAudioFile > httpUrl', httpUrl)
+            var azureMp3Url = `${azureUrl}?urlText=${encodeURIComponent(httpUrl)}&code=${encodeURIComponent(azureCodeKey)}`
+            //console.log('azureMp3Url', azureMp3Url)
+            return azureMp3Url
         }
     }
 
