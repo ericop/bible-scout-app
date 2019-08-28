@@ -176,13 +176,13 @@ const ReadingCardComponent = () => {
                                         }),
                                         m('.row',
                                             m('.col s12 m8', [
-                                                m('button.btn-floating.waves-effect.waves-light.deep-purple.darken-3',
+                                                m('button.btn-floating.waves-effect.waves-light.teal.accent-2',
                                                     {
                                                         disabled: isLoading,
                                                         class: isPlayingAudio ? 'hide' : '',
                                                         onclick: () => playAudio()
                                                     },
-                                                    m('i.material-icons',
+                                                    m('i.material-icons.blue-grey-text.text-darken-4',
                                                         'play_arrow'
                                                     )),
 
@@ -242,7 +242,7 @@ const ReadingCardComponent = () => {
                                 ]),
                             m('.card-action',
                                 m('a', {
-                                    class: settingsService.getIsDarkMode() ? 'orange-text' : 'blue-grey-text text-darken-4',
+                                    class: settingsService.getIsDarkMode() ? 'orange-text text-lighten-2' : 'blue-grey-text text-darken-4',
                                     href: '#!/home'
                                 }, [
                                         m('i.material-icons', 'home'),
