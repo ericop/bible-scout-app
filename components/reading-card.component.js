@@ -176,7 +176,7 @@ const ReadingCardComponent = () => {
                                         }),
                                         m('.row',
                                             m('.col s12 m8', [
-                                                m('button.btn-floating.waves-effect.waves-light.darken-4',
+                                                m('button.btn-floating.waves-effect.waves-light.darken-5',
                                                     {
                                                         disabled: isLoading,
                                                         class: isPlayingAudio ? 'hide' : '',
