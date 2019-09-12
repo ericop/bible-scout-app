@@ -1,0 +1,29 @@
+{
+  "name": "bible-scout-app",
+  "version": "1.0.0",
+  "description": "The Bible Scout App was created to help you scout (to examine, seek and observe) what is in the Holy Bible. It leads you to read through the Bible using a few different reading plans, and to support hundreds of global languages. Your reading progress will be tracked only on your local device, so no accounts are needed, allowing users from around the world anonymous access to the tool in a way that protect their privacy.",
+  "main": "bible-scout-core-app.js",
+  "dependencies": {
+    "terser": "^4.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dist-concat": "terser data/esv-book.data.js data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o biblescout.min.js --source-map \"root='https://biblescout.app',url='biblescout.min.js.map'\" --ecma 6",
+    "dist-compress-mangle": "terser data/esv-book.data.js data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o biblescout.min.js -m -c --source-map \"root='https://biblescout.app',url='biblescout.min.js.map'\" --ecma 6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericop/bible-scout-app.git"
+  },
+  "keywords": [
+    "bible",
+    "mithril",
+    "azure"
+  ],
+  "author": "ericop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ericop/bible-scout-app/issues"
+  },
+  "homepage": "https://biblescout.app"
+}

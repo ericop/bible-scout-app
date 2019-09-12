@@ -48,11 +48,14 @@ const AboutComponent = () => {
                                             ]),
                                         ]),
                                         m('h4.card-sub-heading', 'Special Thanks'),
-                                        m('h6', 'To ', m('a[href="https://www.digitalbibleplatform.com/about"]', 'Digital Bible Platform'), ' for partnering with this app and giving us access to the Bible in text and audio formats.'
+                                        m('h6', 'To ', m('a[href="https://www.digitalbibleplatform.com/about"]', 'Digital Bible Platform'), 
+                                        ' for partnering with this app and giving us access to the Bible in text and audio formats.'
                                         ),
-                                        m('h6', 'To ', m('a[href="https://play.google.com/store/apps/details?id=huss.john.djbible&hl=en_US"]', 'DJ Bible Reading Plan'), ' which inspired this app to carry on its legacy.',
+                                        m('h6', 'To ', m('a[href="https://play.google.com/store/apps/details?id=huss.john.djbible&hl=en_US"]', 'DJ Bible Reading Plan'), 
+                                        ' which inspired this app to carry on its legacy.'
                                         ),
-                                        m('h6', 'To ', m('a[href="https://www.navigators.org/resource/bible-reading-plans"]', 'NavPress'), ' for their generous Fair-Use Permissions that allow reference to their reading plans.'
+                                        m('h6', 'To ', m('a[href="https://www.navigators.org/resource/bible-reading-plans"]', 'NavPress'), 
+                                        ' for their generous Fair-Use Permissions that allow reference to their reading plans.'
                                         ),
 
                                         m('h4.card-sub-heading', 'Report An Issue'),
