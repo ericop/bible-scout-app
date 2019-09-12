@@ -29,7 +29,7 @@ export const NavComponent = () => {
             case 'home':
                 return 'home'
             default:
-                return '//import_contacts'
+                return 'import_contacts'
         }
     }
 
@@ -56,7 +56,7 @@ export const NavComponent = () => {
                                         [
                                             m('span.brand-logo.right.blue-grey-text.text-darken-4', [
                                                 m('span.brand-name', { onclick: openSideNav }, 'Bible Scout'),
-                                                m('i.material-icons.right', '//import_contacts')
+                                                m('i.material-icons.right', 'import_contacts')
                                             ]),
                                             m('ul#nav-big.left.hide-on-med-and-down',
                                                 [
