@@ -50,6 +50,5 @@ const HomeComponent = () => {
         }
     }
 }
-// ot ENGESVO2ET
-// nt ENGESVN2ET
+
 export default HomeComponent
