@@ -1,6 +1,6 @@
-import DiscipleshipJournalReadingPlanData from '../data/discipleship-journal-plan.data.js'
+////import {DiscipleshipJournalReadingPlanData} from '../data/discipleship-journal-plan.data.js'
 
-const BibleMediaService = () => {
+export const BibleMediaService = () => {
     let djPlan = DiscipleshipJournalReadingPlanData
     let baseUrl = 'https://dbt.io'
     let azureCodeKey = 'UCgA0aEhZUMUtOmZV3WORgpB9EaJ05qLHJZV6EKPu/Ito84LKpLKsg=='
@@ -146,5 +146,3 @@ const BibleMediaService = () => {
 
     }
 }
-
-export default BibleMediaService

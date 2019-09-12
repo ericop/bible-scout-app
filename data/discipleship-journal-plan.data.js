@@ -1,4 +1,4 @@
-const DiscipleshipJournalReadingPlanData = {
+export const DiscipleshipJournalReadingPlanData = {
     months: [
         {
             monthNum: 1,
@@ -6074,5 +6074,3 @@ const DiscipleshipJournalReadingPlanData = {
         }
     ]
 }
-
-export default DiscipleshipJournalReadingPlanData

@@ -1,6 +1,6 @@
-import SettingsComponent from '../components/settings.component.js'
+//import {SettingsComponent} from '../components/settings.component.js'
 
-const HomeComponent = () => {
+export const HomeComponent = () => {
     let settingsService = SettingsComponent()
 
     return {
@@ -50,5 +50,3 @@ const HomeComponent = () => {
         }
     }
 }
-
-export default HomeComponent

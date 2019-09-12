@@ -1,10 +1,9 @@
-import ReadingCardComponent from '../components/reading-card.component.js'
+//import {ReadingCardComponent} from '../components/reading-card.component.js'
 
-const EpistlesComponent = () => {
+export const EpistlesComponent = () => {
     return {
         view: () => {
             return m(ReadingCardComponent)
         }
     }
 }
-export default EpistlesComponent

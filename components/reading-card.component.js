@@ -1,7 +1,7 @@
-import BibleMediaService from '../services/bible-media.service.js'
-import SettingsComponent from '../components/settings.component.js'
+//import {BibleMediaService} from '../services/bible-media.service.js'
+//import {SettingsComponent} from '../components/settings.component.js'
 
-const ReadingCardComponent = () => {
+export const ReadingCardComponent = () => {
     let audioBibleVersion = ''
     let textBibleVersion = ''
     let readingCategory = ''
@@ -255,5 +255,3 @@ const ReadingCardComponent = () => {
         }
     }
 }
-
-export default ReadingCardComponent

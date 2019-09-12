@@ -1,7 +1,6 @@
-import BibleMediaService from '../services/bible-media.service.js'
+//import {BibleMediaService} from '../services/bible-media.service.js'
 
-
-const SettingsComponent = () => {
+export const SettingsComponent = () => {
     let isDarkMode = true
     let isReadingProgressCleared = false
     let bibleService = BibleMediaService()
@@ -108,5 +107,3 @@ const SettingsComponent = () => {
         }
     }
 }
-
-export default SettingsComponent

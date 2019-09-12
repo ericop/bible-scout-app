@@ -1,6 +1,6 @@
-import BibleMediaService from '../services/bible-media.service.js'
+//import {BibleMediaService} from '../services/bible-media.service.js'
 
-const NavComponent = () => {
+export const NavComponent = () => {
     let sidenav
     let bibleService = BibleMediaService()
     let readingProgress = { month: 1, day: 1 }
@@ -29,7 +29,7 @@ const NavComponent = () => {
             case 'home':
                 return 'home'
             default:
-                return 'import_contacts'
+                return '//import_contacts'
         }
     }
 
@@ -56,7 +56,7 @@ const NavComponent = () => {
                                         [
                                             m('span.brand-logo.right.blue-grey-text.text-darken-4', [
                                                 m('span.brand-name', { onclick: openSideNav }, 'Bible Scout'),
-                                                m('i.material-icons.right', 'import_contacts')
+                                                m('i.material-icons.right', '//import_contacts')
                                             ]),
                                             m('ul#nav-big.left.hide-on-med-and-down',
                                                 [
@@ -230,5 +230,3 @@ const NavComponent = () => {
         }
     }
 }
-
-export default NavComponent
