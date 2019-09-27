@@ -164,6 +164,21 @@ main {
   opacity: 0;
   transition: opacity .4s .2s ease-in;
 }
+.card.blue-grey.darken-3.white-text div.card-content input.select-dropdown{
+  color: #ff9800;
+}
+
+.bible-card-text.small > .verse, .small-font {
+  font-size: 1rem !important;
+}
+
+.bible-card-text.medium > .verse, .medium-font {
+  font-size: 1.25rem !important;
+}
+
+.bible-card-text.large > .verse, .large-font {
+  font-size: 1.5rem !important;
+}
 
 @media (max-width: 768px) {
   .card div.card-action a {

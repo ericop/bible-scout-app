@@ -163,93 +163,93 @@ export const ReadingCardComponent = () => {
                     m('.card', {
                         class: settingsService.getIsDarkMode() ? 'blue-grey darken-3' : 'white'
                     }, [
-                            m('.card-content', {
-                                class: settingsService.getIsDarkMode() ? 'white-text' : ''
+                        m('.card-content', {
+                            class: settingsService.getIsDarkMode() ? 'white-text' : ''
+                        }, [
+                            m('span.card-title', bibleVerse),
+                            m('div', [
+                                m('audio#mp3-player', {
+                                    class: isLoadingAudioPath && !isLoading ? 'hide' : '',
+                                    controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
+                                    preload: true,
+                                    src: bibleService.getAudioFile(`${audioBaseUrl}${audioPath}`)
+                                }),
+                                m('.row',
+                                    m('.col s12 m8', [
+                                        m('button.btn-floating.waves-effect.waves-light.teal.accent-2',
+                                            {
+                                                disabled: isLoading,
+                                                class: isPlayingAudio ? 'hide' : '',
+                                                onclick: () => playAudio()
+                                            },
+                                            m('i.material-icons.blue-grey-text.text-darken-4',
+                                                'play_arrow'
+                                            )),
+
+                                        m('button.btn-floating.waves-effect.waves-light.orange.darken-4', {
+                                            disabled: isLoading,
+                                            class: isPlayingAudio ? '' : 'hide',
+                                            onclick: () => pauseAudio()
+                                        },
+                                            m('i.material-icons',
+                                                'pause'
+                                            )
+                                        ),
+                                        m('#timeline',
+                                            m('#playhead')
+                                        ),
+                                        m('.volume-container', [
+                                            m('i.material-icons',
+                                                'volume'
+                                            ),
+                                            m('input.volume', {
+                                                type: 'range',
+                                                min: 0,
+                                                max: 100,
+                                                value: 50
+                                            })
+                                        ])
+                                    ])
+                                )
+
+                            ]),
+                            m('.progress', { class: !isLoading ? 'hide' : '' }, [
+                                m('.indeterminate')
+                            ]),
+                            m('.bible-card-text', { class: settingsService.getFontSize() }, text.map(v => {
+                                return m('span.verse',
+                                    [
+                                        v.verseNum == 1 ? m('span', [m('br'), m('strong.verseChapter', `${v.chapter} `)]) : '',
+                                        m('sup.verseNum', `${v.verseNum} `),
+                                        v.text
+                                    ]
+                                )
+                            })),
+                            m('form.card-actions.button-nav-group', [
+                                m('button.waves-effect.waves-light.btn.amber.accent-3.blue-grey-text.text-darken-4',
+                                    {
+                                        disabled: isLoading,
+                                        class: isVeryBeginning() ? 'hide' : '',
+                                        onclick: () => decrement()
+                                    }, `Previous Reading`),
+                                m('button.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                                    {
+                                        disabled: isLoading,
+                                        onclick: () => increment()
+                                    }, `Next Reading`)
+
+                            ])
+                        ]),
+                        m('.card-action',
+                            m('a', {
+                                class: settingsService.getIsDarkMode() ? 'orange-text text-lighten-2' : 'blue-grey-text text-darken-4',
+                                href: '#!/home'
                             }, [
-                                    m('span.card-title', bibleVerse),
-                                    m('div', [
-                                        m('audio#mp3-player', {
-                                            class: isLoadingAudioPath && !isLoading ? 'hide' : '',
-                                            controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
-                                            preload: true,
-                                            src: bibleService.getAudioFile(`${audioBaseUrl}${audioPath}`)
-                                        }),
-                                        m('.row',
-                                            m('.col s12 m8', [
-                                                m('button.btn-floating.waves-effect.waves-light.teal.accent-2',
-                                                    {
-                                                        disabled: isLoading,
-                                                        class: isPlayingAudio ? 'hide' : '',
-                                                        onclick: () => playAudio()
-                                                    },
-                                                    m('i.material-icons.blue-grey-text.text-darken-4',
-                                                        'play_arrow'
-                                                    )),
-
-                                                m('button.btn-floating.waves-effect.waves-light.orange.darken-4', {
-                                                    disabled: isLoading,
-                                                    class: isPlayingAudio ? '' : 'hide',
-                                                    onclick: () => pauseAudio()
-                                                },
-                                                    m('i.material-icons',
-                                                        'pause'
-                                                    )
-                                                ),
-                                                m('#timeline',
-                                                    m('#playhead')
-                                                ),
-                                                m('.volume-container', [
-                                                    m('i.material-icons',
-                                                        'volume'
-                                                    ),
-                                                    m('input.volume', {
-                                                        type: 'range',
-                                                        min: 0,
-                                                        max: 100,
-                                                        value: 50
-                                                    })
-                                                ])
-                                            ])
-                                        )
-
-                                    ]),
-                                    m('.progress', { class: !isLoading ? 'hide' : '' }, [
-                                        m('.indeterminate')
-                                    ]),
-                                    m('.bible-card-text'), text.map(v => {
-                                        return m('span.verse',
-                                            [
-                                                v.verseNum == 1 ? m('span', [m('br'), m('strong.verseChapter', `${v.chapter} `)]) : '',
-                                                m('sup.verseNum', `${v.verseNum} `),
-                                                v.text
-                                            ]
-                                        )
-                                    }),
-                                    m('form.card-actions.button-nav-group', [
-                                        m('button.waves-effect.waves-light.btn.amber.accent-3.blue-grey-text.text-darken-4',
-                                            {
-                                                disabled: isLoading,
-                                                class: isVeryBeginning() ? 'hide' : '',
-                                                onclick: () => decrement()
-                                            }, `Previous Reading`),
-                                        m('button.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
-                                            {
-                                                disabled: isLoading,
-                                                onclick: () => increment()
-                                            }, `Next Reading`)
-
-                                    ])
-                                ]),
-                            m('.card-action',
-                                m('a', {
-                                    class: settingsService.getIsDarkMode() ? 'orange-text text-lighten-2' : 'blue-grey-text text-darken-4',
-                                    href: '#!/home'
-                                }, [
-                                        m('i.material-icons', 'home'),
-                                        m('span.action-words', 'Back Home')
-                                    ])
-                            )
-                        ])
+                                m('i.material-icons', 'home'),
+                                m('span.action-words', 'Back Home')
+                            ])
+                        )
+                    ])
                 ])
             ])
         }

@@ -7,8 +7,8 @@ self.addEventListener('install', function (evt) {
 
 self.addEventListener('fetch', function (evt) {
   console.log('The service worker is serving the asset.')
-  evt.respondWith(fromNetwork(evt.request, 400).catch(function () {
-    return fromCache(evt.request)
+  evt.respondWith(fromNetwork(evt.request, 1500).catch(function () {
+    return console.error(`Event ${evt.srcElement} had error or no response in 1500ms`)
   }))
 })
 
@@ -27,13 +27,5 @@ function fromNetwork(request, timeout) {
       clearTimeout(timeoutId)
       fulfill(response)
     }, reject)
-  })
-}
-
-function fromCache(request) {
-  return caches.open(CACHE).then(function (cache) {
-    return cache.match(request).then(function (matching) {
-      return matching || Promise.reject('no-match')
-    })
   })
 }
