@@ -5,6 +5,10 @@ export const SettingsComponent = () => {
     let isReadingProgressCleared = false
     let bibleService = BibleMediaService()
     const categories = ['law-and-prophets', 'wisdom', 'gospels', 'epistles']
+    let categoryChoice = 'law-and-prophets'
+    let monthChoice = 1
+    let dayChoice = 1
+
     let setColorMode = (colorMode) => {
         console.log('colorMode', colorMode)
         localStorage.setItem('colorMode', colorMode)
@@ -20,12 +24,30 @@ export const SettingsComponent = () => {
     }
 
     let setReadingProgress = () => {
-        let category = document.getElementById('category-select').value
-        let month = parseInt(document.getElementById('month-select').value)
-        let day = parseInt(document.getElementById('day-select').value)
+        // let category = document.getElementById('category-select').value || 'wisdom'
+        // let month = parseInt(document.getElementById('month-select').value) || 1
+        // let day = parseInt(document.getElementById('day-select').value) || 1
+
+        // let category = 'wisdom'
+        // let month = 1
+        // let day = 1
         // category options = ['law-and-prophets', 'wisdom', 'gospels', 'epistles']
-        bibleService.setReadingProgress(category, month, day)
-        console.log(`setReadingProgress for '${category}' to month '${month}' day '${day}'`)
+        bibleService.setReadingProgress(categoryChoice, parseInt(monthChoice), parseInt(dayChoice))
+        console.log(`setReadingProgress for '${categoryChoice}' to month '${monthChoice}' day '${dayChoice}'`)
+    }
+
+    let getReadingProgressVerse = () => {
+        // let category = document.getElementById('category-select').value
+        // let month = parseInt(document.getElementById('month-select').value)
+        // let day = parseInt(document.getElementById('day-select').value)
+
+        // let category = 'wisdom'
+        // let month = 1
+        // let day =  1
+        console.log(`Get Reading Progress to  '${categoryChoice}' to month '${monthChoice}' day '${dayChoice}'`)
+        let verse = bibleService.getDiscipleShipJournalVerse(parseInt(monthChoice), parseInt(dayChoice), categoryChoice)
+        console.log('Get Reading Progress to ', verse)
+        return verse.verse
     }
 
     let getIsDarkModePrivate = () => {
@@ -114,27 +136,41 @@ export const SettingsComponent = () => {
                                 m('br'),
                                 m('.card-title', 'Jump Reading Progress To a Specific Day'),
                                 m('.input-field.col.s12',
-                                    m('select#category-select',
+                                    m('select#category-select.browser-default',
+                                        {
+                                            onchange: e => categoryChoice = e.target.value,
+                                            value: categoryChoice
+                                        },
                                         categories.map(v => {
                                             return m('option', { value: v }, v)
                                         }))
                                 ),
                                 m('.input-field.col.s12',
-                                    m('select#month-select',
+                                    m('select#month-select.browser-default',
+                                        {
+                                            onchange: e => monthChoice = e.target.value,
+                                            value: monthChoice
+                                        },
                                         Array(12).fill(0).map((e, i) => i + 1).map(v => {
                                             return m('option', { value: v }, v)
                                         }))
                                 ),
                                 m('.input-field.col.s12',
-                                    m('select#day-select.orange-text', Array(25).fill(0).map((e, i) => i + 1).map(v => {
-                                        return m('option', { value: v }, v)
-                                    }))
+                                    m('select#day-select.browser-default',
+                                        {
+                                            onchange: e => dayChoice = e.target.value,
+                                            value: dayChoice
+                                        },
+                                        Array(25).fill(0).map((e, i) => i + 1).map(v => {
+                                            return m('option', { value: v }, v)
+                                        }))
                                 ),
                                 m('br'),
                                 m('button.btn-small.waves-effect.waves-light.orange.blue-grey-text.text-darken-4', {
                                     onclick: () => setReadingProgress()
                                 }, 'Set Reading Progress'),
                                 m('br'),
+                                m('p', `> "${categoryChoice}" progress will jump to "${getReadingProgressVerse()}".`),
                                 m('br'),
                                 m('.card-title', 'Work In Progress Settings'),
                                 m('.switch',
