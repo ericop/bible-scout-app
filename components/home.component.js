@@ -17,7 +17,7 @@ export const HomeComponent = () => {
         console.log(`Get Reading Progress to  '${category}' to month '${progress.month}' day '${progress.day}'`)
         let verse = bibleService.getDiscipleShipJournalVerse(parseInt(progress.month), parseInt(progress.day), category)
         console.log('Get Reading Progress to ', verse.verse)
-        return `⁁⁐⁛ month ${progress.month} day ${progress.day} ⁍ ${verse.verse}` 
+        return`month ${progress.month} day ${progress.day} ⁞ ${verse.verse}` 
     }
 
     return {
