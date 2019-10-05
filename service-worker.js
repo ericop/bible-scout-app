@@ -7,8 +7,8 @@ self.addEventListener('install', function (evt) {
 
 self.addEventListener('fetch', function (evt) {
   console.log('The service worker is serving the asset.')
-  evt.respondWith(fromNetwork(evt.request, 1500).catch(function () {
-    return console.error(`Event ${evt.srcElement} had error or no response in 1500ms`)
+  evt.respondWith(fromNetwork(evt.request, 2500).catch(function () {
+    return console.error(`Event ${evt.srcElement} had error or no response in 2500ms`)
   }))
 })
 
