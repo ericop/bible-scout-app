@@ -18,12 +18,46 @@
 
     <!-- input data for reading plan 1 https://gitlab.com/ericop/bible-reading-plan-to-json -->
     <script>
+        var globalServiceWorker = null;
+
+        function listenForWaitingServiceWorker(reg, callback) {
+            function awaitStateChange() {
+                reg.installing.addEventListener('statechange', function () {
+                    if (this.state === 'installed') {
+                        globalServiceWorker = reg
+                        callback(reg)
+                    }
+                })
+            }
+            if (!reg) {
+                return
+            }
+            if (reg.waiting) {
+                globalServiceWorker = reg
+                return callback(reg)
+            }
+            if (reg.installing) {
+                awaitStateChange()
+            }
+            reg.addEventListener('updatefound', awaitStateChange)
+        }
+
+        function reloadPage() {
+            console.log('reloading...')
+            setTimeout(function(){ window.location.reload() }, 2000);
+        }
+
+        function ignoreUpdate() {
+            console.warn('ignore Bible Scout new version')
+            document.querySelector('#toast-container').setAttribute('style', 'display:none')
+        }
+
         // This is the 'Offline copy of pages' service worker from https://preview.pwabuilder.com/serviceworker
         // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
         // Check compatibility for the browser we're running this in
         if ('serviceWorker' in navigator) {
             //if (navigator.serviceWorker.controller) {
-            console.log('[PWA] active service worker found, no need to register')
+            console.log('[PWA] active service worker found, no need to register.')
             //} else {
             // Register the service worker
             navigator.serviceWorker
@@ -31,7 +65,49 @@
                     // , {scope: './'}
                 )
                 .then(function (reg) {
-                    console.log('[PWA] Service worker has been registered for scope:',  reg)
+                    console.log('[PWA] Service worker has been registered for scope:', reg)
+                    globalServiceWorker = reg
+                    // example starts from https://stackoverflow.com/questions/40100922/activate-updated-service-worker-on-refresh/40130378#40130378
+
+
+                    // reload once when the new Service Worker starts activating
+                    var refreshing = false
+                    navigator.serviceWorker.addEventListener('controllerchange',
+                        function () {
+                            if (refreshing) return
+                            refreshing = true
+                            window.location.reload()
+                        }
+                    )
+
+                    function promptUserToRefresh(registeredWorker) {
+                        console.log('promptUserToRefresh reg=',registeredWorker)
+                        globalServiceWorker = registeredWorker
+
+                        var toastHtml =
+                            `<span>New version available</span>
+                              <button class="btn-flat toast-action" 
+                                onclick="globalServiceWorker.waiting.postMessage({action:'skipWaiting'});reloadPage();">
+                                  update
+                              </button>
+                              <button class="btn-flat toast-action" onclick="ignoreUpdate()">
+                                ignore
+                              </button>'`
+
+                        M.toast({
+                            html: toastHtml,
+                            displayLength: 10000,
+                            classes: 'update-app-toast'
+                        })
+
+                        // this is just an example
+                        // don't use window.confirm in real life; it's terrible
+                        // if (window.confirm("New version available! OK to refresh?")) {
+                        //     reg.waiting.postMessage('skipWaiting')
+                        // }
+                    }
+                    listenForWaitingServiceWorker(reg, promptUserToRefresh)
+                    //example ends
                 })
                 .catch(function (err) {
                     console.log('[PWA] Service worker did not work. This happened: ', err)

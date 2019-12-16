@@ -180,6 +180,20 @@ main {
   font-size: 1.5rem !important;
 }
 
+#toast-container{
+  top:1%;
+  margin: 0 auto;
+}
+
+#toast-container .toast {
+  border: 2px solid #ff9800;
+}
+
+#toast-container .toast .toast-action {
+  color: #ff9800;
+}
+
+
 @media (max-width: 768px) {
   .card div.card-action a {
     display: block;

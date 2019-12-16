@@ -1,31 +1,109 @@
-var CACHE = 'network-or-cache'
-// from https://serviceworke.rs/strategy-network-or-cache_service-worker_doc.html
-self.addEventListener('install', function (evt) {
+var staticCacheName = 'bible-scout-cache-update-and-refresh-v0.9.2'
+// from https://serviceworke.rs/strategy-cache-update-and-refresh_service-worker_doc.html
+//   and https://github.com/jakearchibald/wittr/blob/task-clean-db/public/js/sw/index.js 
+self.addEventListener('install', function (event) {
   console.log('The service worker is being installed.')
-  evt.waitUntil(preCache())
+  event.waitUntil(preCache())
 })
 
-self.addEventListener('fetch', function (evt) {
+// https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/delete
+self.addEventListener('activate', function (event) {
+  event.waitUntil(
+    caches.keys().then(function (cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function (cacheName) {
+          return cacheName != staticCacheName
+        }).map(function (cacheName) {
+          return caches.delete(cacheName)
+        })
+      )
+    })
+  )
+})
+
+self.addEventListener('fetch', function (event) {
   console.log('The service worker is serving the asset.')
-  evt.respondWith(fromNetwork(evt.request, 1500).catch(function () {
-    return console.error(`Event ${evt.srcElement} had error or no response in 1500ms`)
-  }))
+
+  var requestUrl = new URL(event.request.url)
+  // if (requestUrl.origin === location.origin) {
+  //   if (requestUrl.pathname === '/') {
+  //     event.respondWith(caches.match('/skeleton'))
+  //     return
+  //   }
+  // }
+
+  event.respondWith(fromCache(event.request))
+
+  event.waitUntil(
+    updateFromNetwork(event.request)
+      .then(refresh)
+  )
 })
 
+self.addEventListener('message', function(event) {
+  console.log('sw message event',event)
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting()
+  }
+
+  // TODO: allow this to trigger from Settings Page
+  if (event.data.action === 'clearAllCache') {
+    event.waitUntil(
+      caches.keys().then(function (cacheNames) {
+        return Promise.all(
+          cacheNames.map(function (cacheName) {
+            return caches.delete(cacheName)
+          })
+        )
+      })
+    )
+  }
+})
+
+// Utility functions 
 function preCache() {
-  return caches.open(CACHE).then(function (cache) {
+  return caches.open(staticCacheName).then(function (cache) {
     return cache.addAll([
-      './index.html'
+      './index.html',
+      '/bible-scout-192x192.png',
+      'third-party/materialize.min.css',
+      'app-styles.css',
+      'third-party/mithril2.min.js',
+      'third-party/materialize.min.js',
+      '/third-party/material-icons.woff2',
+      'bible-open-to-john.jpg'
     ])
   })
 }
 
-function fromNetwork(request, timeout) {
-  return new Promise(function (fulfill, reject) {
-    var timeoutId = setTimeout(reject, timeout)
-    fetch(request).then(function (response) {
-      clearTimeout(timeoutId)
-      fulfill(response)
-    }, reject)
+function fromCache(request) {
+  return caches.open(staticCacheName).then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || fetch(request)
+    })
   })
+}
+
+function updateFromNetwork(request) {
+  return caches.open(staticCacheName).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response.clone()).then(function () {
+        return response
+      })
+    })
+  })
+}
+
+function refresh(response) {
+  return self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+      var message = {
+        type: 'refresh',
+        url: response.url,
+        eTag: response.headers.get('ETag')
+      }
+      client.postMessage(JSON.stringify(message))
+    })
+  })
+
 }
