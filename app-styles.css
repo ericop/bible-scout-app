@@ -93,6 +93,11 @@ main {
   background: url("../bible-open-to-john.jpg") center / cover;
 }
 
+.card div.card-action a {
+  display: block;
+  padding-top: 1rem;
+}
+
 .card-action a i.material-icons {
   padding: 0rem 0.25rem -0.5rem 0rem;
 }
@@ -169,15 +174,15 @@ main {
 }
 
 .bible-card-text.small > .verse, .small-font {
-  font-size: 1rem !important;
+  font-size: 1.05rem !important;
 }
 
 .bible-card-text.medium > .verse, .medium-font {
-  font-size: 1.25rem !important;
+  font-size: 1.2rem !important;
 }
 
 .bible-card-text.large > .verse, .large-font {
-  font-size: 1.5rem !important;
+  font-size: 1.4rem !important;
 }
 
 #toast-container{
@@ -192,17 +197,18 @@ main {
 #toast-container .toast .toast-action {
   color: #ff9800;
 }
+.card div.card-action a {
+  display: block;
+  padding-top: 1rem;
+}
 
+label.done {
+  padding-left: 1rem;
+}
 
 @media (max-width: 768px) {
-  .card div.card-action a {
-    display: block;
-    padding-top: 1rem;
-  }
-
   .nav-second-row .nav-wrapper.orange {
     height: 4rem;
-
   }
 
   .nav-wrapper.orange a.breadcrumb span {

@@ -16,6 +16,7 @@ export const ReadingCardComponent = () => {
     let audioPath = ''
     let isPlayingAudio = false
     let bibleVerse = ''
+    let isDoneChecked = false
     let readingProgress = { day: 1, month: 1 }
     let isVeryBeginning = () => {
         //console.log('readingDay', readingDay, ' < 2 && readingMonth ===', readingMonth)
@@ -67,6 +68,32 @@ export const ReadingCardComponent = () => {
         fetchText(textBibleVersion, book, verseString)
     }
 
+    let incrementLocalStoreOnly = () => {
+        isDoneChecked = document.querySelector('label.done > input').checked;
+        console.log('isDoneChecked', isDoneChecked)
+
+        let readingMonthForLocalStore = readingMonth  // 1 = Jan
+        let readingDayForLocalStore = readingDay
+
+        if (isDoneChecked) {
+            let shouldGoForwardAMonth = readingDay === 25 && readingMonth < 12
+            let shouldStartNewYear = readingDay === 25 && readingMonth === 12
+
+            if (shouldGoForwardAMonth) {
+                readingMonthForLocalStore++
+                readingDayForLocalStore = 1
+            }
+            else if (shouldStartNewYear) {
+                readingDayLocalStore = 1
+                readingDayForLocalStore = 1
+            }
+            else {
+                readingDayForLocalStore++
+            }
+        }
+        console.log('readingCategory, readingMonthForLocalStore, readingDayForLocalStore)', readingCategory, readingMonthForLocalStore, readingDayForLocalStore)
+        bibleService.setReadingProgress(readingCategory, readingMonthForLocalStore, readingDayForLocalStore)
+    }
     let increment = () => {
         if (isPlayingAudio) {
             pauseAudio()
@@ -236,7 +263,15 @@ export const ReadingCardComponent = () => {
                                     {
                                         disabled: isLoading,
                                         onclick: () => increment()
-                                    }, `Next Reading`)
+                                    }, `Next Reading`),
+                                m('label.done', {
+                                    disabled: isLoading,
+                                    onclick: () => incrementLocalStoreOnly()
+                                },
+                                    [
+                                        m('input[type="checkbox"]'),
+                                        m('span', {class: settingsService.getIsDarkMode() ? 'white-text' : 'black-text'},'Done')
+                                    ])
 
                             ])
                         ]),
