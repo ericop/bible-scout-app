@@ -72,7 +72,6 @@ export const BibleMediaService = () => {
 
         getText: (bibleVersion, book, verseString) => {
             var verseObj = verseIntoPieces(verseString)
-            console.log('vs obj=', verseObj)
             var urlText = `${baseUrl}/text/verse?reply=json&v=2&dam_id=${bibleVersion}&book_id=${book}&chapter_id=${verseObj.firstChapter}${verseObj.firstVerse ? '&verse_start=' + verseObj.firstVerse : ''}${verseObj.lastVerse ? '&verse_end=' + verseObj.lastVerse : ''}`
             console.log('urlText:', urlText)
             // single chapter
@@ -142,7 +141,10 @@ export const BibleMediaService = () => {
                     code: azureCodeKey
                 }
             })
-        }
+        },
 
+        clearCachedTextAndAudio: () => {
+
+        }
     }
 }

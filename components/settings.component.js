@@ -17,6 +17,32 @@ export const SettingsComponent = () => {
         console.log('fontSize', fontSize)
         localStorage.setItem('fontSize', fontSize)
     }
+
+    let clearTextAndAudioCache = () => {
+        console.log('globalServiceWorker', globalServiceWorker)
+
+        var toastContainer = document.querySelector('#toast-container')
+        if (toastContainer) {
+            toastContainer.setAttribute('style', 'display:block')
+        }
+
+        var toastHtml =
+        `<span>Clear All Offline Text and Audio from the Brower's Cache?</span>
+          <button class="btn-flat toast-action" 
+            onclick="globalServiceWorker.active.postMessage({action:'clearAllCache'})">
+              clear cache
+          </button>
+          <button class="btn-flat toast-action" onclick="ignoreUpdate()">
+            nah
+          </button>'`
+
+        M.toast({
+            html: toastHtml,
+            displayLength: 3000,
+            classes: 'update-app-toast'
+        })
+    }
+
     let clearReadingProgress = () => {
         categories.forEach(category => bibleService.setReadingProgress(category, 1, 1))
         isReadingProgressCleared = true
@@ -132,6 +158,11 @@ export const SettingsComponent = () => {
                                     onclick: () => clearReadingProgress(),
                                     disabled: (isReadingProgressCleared ? 'true' : '')
                                 }, 'Clear Reading Progress'),
+                                m('br'),
+                                m('br'),
+                                m('button.btn-small.waves-effect.waves-light.orange.blue-grey-text.text-darken-4', {
+                                    onclick: () => clearTextAndAudioCache()
+                                }, 'Clear Offline Text and Audio Cache'),
                                 m('br'),
                                 m('br'),
                                 m('.card-title', 'Jump Reading Progress To a Specific Day'),

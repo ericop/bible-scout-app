@@ -14,6 +14,7 @@ export const ReadingCardComponent = () => {
     let isLoading = true
     let isLoadingAudioPath = false
     let audioPath = ''
+    let nextAudioPath = ''
     let isPlayingAudio = false
     let bibleVerse = ''
     let isDoneChecked = false
@@ -94,6 +95,43 @@ export const ReadingCardComponent = () => {
         console.log('readingCategory, readingMonthForLocalStore, readingDayForLocalStore)', readingCategory, readingMonthForLocalStore, readingDayForLocalStore)
         bibleService.setReadingProgress(readingCategory, readingMonthForLocalStore, readingDayForLocalStore)
     }
+
+    let preFetchNextReadingMedia = () => {
+        let nextReadingDay = readingDay
+        let nextReadingMonth = readingMonth
+        
+        let shouldGoForwardAMonth = nextReadingDay === 25 && nextReadingMonth < 12
+        let shouldStartNewYear = nextReadingDay === 25 && nextReadingMonth === 12
+
+        if (shouldGoForwardAMonth) {
+            nextReadingMonth++
+            nextReadingDay = 1
+        }
+        else if (shouldStartNewYear) {
+            nextReadingDay = 1
+            nextReadingMonth = 1
+        }
+        else {
+            nextReadingDay++
+        }
+
+        var verseInfo = bibleService.getDiscipleShipJournalVerse(nextReadingMonth, nextReadingDay, readingCategory)
+        console.log('preFetchNextReadingMedia', verseInfo.verse)
+
+        var [book, verseString] = verseInfo.verse.split(' ')
+
+        bibleService.getAudioPath(audioBibleVersion, book, verseString)
+        .then((data) => {
+            console.log('preFetchNextReadingMedia audio', data)
+            nextAudioPath = data[0] ? data[0].path : ''
+        })
+
+        bibleService.getText(textBibleVersion, book, verseString)
+        .then((data) => {
+            console.log('preFetchNextReadingMedia text', data)
+        })
+    }
+
     let increment = () => {
         if (isPlayingAudio) {
             pauseAudio()
@@ -114,6 +152,7 @@ export const ReadingCardComponent = () => {
         }
 
         setInitialData()
+        preFetchNextReadingMedia()
     }
 
     let decrement = () => {
@@ -200,6 +239,12 @@ export const ReadingCardComponent = () => {
                                     controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
                                     preload: true,
                                     src: bibleService.getAudioFile(`${audioBaseUrl}${audioPath}`)
+                                }),
+                                m('audio#mp3-player', {
+                                    class: 'hide',
+                                    controls: 'true',
+                                    preload: true,
+                                    src: bibleService.getAudioFile(`${audioBaseUrl}${nextAudioPath}`)
                                 }),
                                 m('.row',
                                     m('.col s12 m8', [

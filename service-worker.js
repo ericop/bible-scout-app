@@ -1,4 +1,4 @@
-var staticCacheName = 'bible-scout-cache-update-and-refresh-v0.9.3'
+var staticCacheName = 'bible-scout-cache-update-and-refresh-v0.9.4'
 // from https://serviceworke.rs/strategy-cache-update-and-refresh_service-worker_doc.html
 //   and https://github.com/jakearchibald/wittr/blob/task-clean-db/public/js/sw/index.js 
 self.addEventListener('install', function (event) {
@@ -41,13 +41,14 @@ self.addEventListener('fetch', function (event) {
 })
 
 self.addEventListener('message', function(event) {
-  console.log('sw message event',event)
+  console.log('service worker event', event)
   if (event.data.action === 'skipWaiting') {
     self.skipWaiting()
   }
 
   // TODO: allow this to trigger from Settings Page
   if (event.data.action === 'clearAllCache') {
+    console.log('service worker action: clearAllCache', event)
     event.waitUntil(
       caches.keys().then(function (cacheNames) {
         return Promise.all(

@@ -48,7 +48,7 @@
         }
 
         function ignoreUpdate() {
-            console.warn('ignore Bible Scout new version')
+            console.warn('ignore Bible Scout new version or Cache clear')
             document.querySelector('#toast-container').setAttribute('style', 'display:none')
         }
 
@@ -96,7 +96,7 @@
 
                         M.toast({
                             html: toastHtml,
-                            displayLength: 10000,
+                            displayLength: 8000,
                             classes: 'update-app-toast'
                         })
 
