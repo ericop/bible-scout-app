@@ -18,23 +18,23 @@
                 "sizes": "16x16 32x32"
             },
             {
-                "src": "https://biblescout.app/favicon-32.png",
+                "src": "https://biblescout.app/media/favicon-32.png",
                 "sizes": "32x32"
             },
             {
-                "src": "https://biblescout.app/bible-scout-1240x600.png",
+                "src": "https://biblescout.app/media/bible-scout-1240x600.png",
                 "sizes": "1240x600"
             },
             {
-                "src": "https://biblescout.app/bible-scout-192x192.png",
+                "src": "https://biblescout.app/media/bible-scout-192x192.png",
                 "sizes": "192x192"
             },
             {
-                "src": "https://biblescout.app/bible-scout-96x96.png",
+                "src": "https://biblescout.app/media/bible-scout-96x96.png",
                 "sizes": "96x96"
             },
             {
-                "src": "https://biblescout.app/bible-scout-512x512.png",
+                "src": "https://biblescout.app/media/bible-scout-512x512.png",
                 "sizes": "512x512"
             }
     ]

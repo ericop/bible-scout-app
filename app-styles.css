@@ -90,7 +90,7 @@ main {
 
 /* Uses a transparent header that draws on top of the layout's background */
 .bible-background {
-  background: url("../bible-open-to-john.jpg") center / cover;
+  background: url("../media/bible-open-to-john.jpg") center / cover;
 }
 
 .card div.card-action a {

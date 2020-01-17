@@ -72,13 +72,13 @@ function preCache() {
   return caches.open(staticCacheName).then(function (cache) {
     return cache.addAll([
       './index.html',
-      '/bible-scout-192x192.png',
+      'media/bible-scout-192x192.png',
       'third-party/materialize.min.css',
       'app-styles.css',
       'third-party/mithril2.min.js',
       'third-party/materialize.min.js',
       '/third-party/material-icons.woff2',
-      'bible-open-to-john.jpg'
+      'media/bible-open-to-john.jpg'
     ])
   })
 }
