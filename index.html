@@ -46,7 +46,7 @@
 
         function reloadPage() {
             console.log('reloading...')
-            setTimeout(function(){ window.location.reload() }, 2000);
+            setTimeout(function () { window.location.reload() }, 2000);
         }
 
         function ignoreUpdate() {
@@ -83,7 +83,7 @@
                     )
 
                     function promptUserToRefresh(registeredWorker) {
-                        console.log('promptUserToRefresh reg=',registeredWorker)
+                        console.log('promptUserToRefresh reg=', registeredWorker)
                         globalServiceWorker = registeredWorker
 
                         var toastHtml =

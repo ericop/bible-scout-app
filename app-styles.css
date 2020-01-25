@@ -137,6 +137,12 @@ main {
   padding-left: 0.5rem;
 }
 
+.bible-scout-logo {
+  background-image: url('/media/bible-scout-icon-monocle.svg');
+  background-repeat: no-repeat;
+  width: 2.5em;
+}
+
 .verseChapter,
 .card-sub-heading {
   font-size: 1.5rem;
