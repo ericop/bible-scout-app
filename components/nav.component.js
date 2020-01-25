@@ -56,7 +56,7 @@ export const NavComponent = () => {
                                         [
                                             m('span.brand-logo.right.blue-grey-text.text-darken-4', [
                                                 m('span.brand-name', { onclick: openSideNav }, 'Bible Scout'),
-                                                m('i.material-icons.right.bible-scout-logo', 'bible scout logo')
+                                                m('i.material-icons.right.bible-scout-logo-binoculars', 'bible scout logo')
                                             ]),
                                             m('ul#nav-big.left.hide-on-med-and-down',
                                                 [

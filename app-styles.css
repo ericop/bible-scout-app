@@ -137,10 +137,16 @@ main {
   padding-left: 0.5rem;
 }
 
-.bible-scout-logo {
+.bible-scout-logo-monocle {
   background-image: url('/media/bible-scout-icon-monocle.svg');
   background-repeat: no-repeat;
   width: 2.5em;
+}
+
+.bible-scout-logo-binoculars {
+  background-image: url('/media/bible-scout-icon-binoculars.svg');
+  background-repeat: no-repeat;
+  width: 4em;
 }
 
 .verseChapter,
