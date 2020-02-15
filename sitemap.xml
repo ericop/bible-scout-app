@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+      <loc>https://biblescout.app/#!/about</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>https://biblescout.app</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>.8</priority>
+</url>
+<url>
+      <loc>https://biblescout.app/#!/home</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>.8</priority>
+</url>
+<url>
+      <loc>https://biblescout.app/#!/law-and-prophets</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>.5</priority>
+</url>
+<url>
+      <loc>https://biblescout.app/#!/wisdom</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>.5</priority>
+</url>
+<url>
+      <loc>https://biblescout.app/#!/gospels</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>.5</priority>
+</url>
+<url>
+      <loc>https://biblescout.app/#!/epistles</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>.5</priority>
+</url>
+<url>
+      <loc>https://biblescout.app/#!/settings</loc>
+      <lastmod>2005-01-01</lastmod>
+      <changefreq>hourly</changefreq>
+      <priority>.4</priority>
+</url>
+</urlset>
