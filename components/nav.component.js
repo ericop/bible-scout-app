@@ -54,19 +54,19 @@ export const NavComponent = () => {
                                 [
                                     m('#nav-top-row.nav-wrapper.teal.accent-3.z-depth-1',
                                         [
-                                            m('span.brand-logo.right.blue-grey-text.text-darken-4', [
-                                                m('span.brand-name', { onclick: openSideNav }, 'Bible Scout'),
+                                            m('span.brand-logo.right.blue-grey-text.text-darken-4', { onclick: openSideNav },[
+                                                m('span.brand-name', 'Bible Scout'),
                                                 m('i.right.bible-scout-logo-binoculars-view')
                                             ]),
                                             m('ul#nav-big.left.hide-on-med-and-down',
                                                 [
                                                     m('li',
-                                                        { class: isCurrentTopRoute('about') ? 'active' : '' },
+                                                        { class: isCurrentTopRoute('home') ? 'active' : '' },
                                                         [m('a.navigation__link.blue-grey-text.text-darken-4', {
-                                                            href: '#!/about',
+                                                            href: '#!/home',
                                                             onclick: closeSideNav
                                                         }, [
-                                                                m('i.material-icons', 'info')
+                                                                m('i.material-icons', 'home')
                                                             ]
                                                         )]
                                                     ),
@@ -138,7 +138,7 @@ export const NavComponent = () => {
                                             [
                                                 m('a.breadcrumb.blue-grey-text.text-darken-4', [
                                                     m('i.material-icons', getIconForCurrentRoute()),
-                                                    m('span', kebabToCapitalizedTitle(m.route.get().split('/')[1]))
+                                                    m('h1', kebabToCapitalizedTitle(m.route.get().split('/')[1]))
                                                 ]),
 
                                                 m('a.breadcrumb.blue-grey-text.text-darken-4', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },

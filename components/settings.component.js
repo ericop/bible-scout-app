@@ -247,7 +247,7 @@ export const SettingsComponent = () => {
                         m('.card-action',
                             m('a', {
                                 class: getIsDarkModePrivate() ? 'orange-text' : 'blue-grey-text text-darken-4',
-                                href: '#!/home'
+                                href: '#'// home
                             }, [
                                 m('i.material-icons', 'home'),
                                 m('span.action-words', 'Back Home')

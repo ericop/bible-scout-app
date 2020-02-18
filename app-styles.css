@@ -23,6 +23,7 @@
 
 body {
   background-color: #913f21;
+  scroll-behavior: smooth;
 }
 
 main {
@@ -129,12 +130,22 @@ main {
   z-index: 400;
 }
 
+#nav-top-row .brand-logo {
+  cursor: copy;
+}
+
 .breadcrumb::before {
+
   color: #37474f;
 }
 
+.breadcrumb>h1 {
+  font-size: 18px;
+  display: inline;
+}
+
 .nav-wrapper.orange div.col.s12 a.breadcrumb>* {
-  padding-left: 0.5rem;
+  padding-left: .5rem;
 }
 
 .bible-scout-logo-monocle {
