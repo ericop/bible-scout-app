@@ -240,11 +240,27 @@ label.done {
     height: 4rem;
   }
 
-  .nav-wrapper.orange a.breadcrumb span, .nav-wrapper.orange a.breadcrumb h1 {
+  .nav-wrapper.orange a.breadcrumb span {
     display: inline-block;
     max-width: 6.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .nav-wrapper.orange a.breadcrumb h1 {
+    display: inline-block;
+    margin: auto;
+    max-width: 6.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    line-height: normal;
+  }
+
+  .nav-wrapper.orange a.breadcrumb h1.read-card-heading {
+    padding-bottom: 3.3rem;
+  }
+  
 }

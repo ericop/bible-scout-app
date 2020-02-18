@@ -54,7 +54,7 @@ export const NavComponent = () => {
                                 [
                                     m('#nav-top-row.nav-wrapper.teal.accent-3.z-depth-1',
                                         [
-                                            m('span.brand-logo.right.blue-grey-text.text-darken-4', { onclick: openSideNav },[
+                                            m('span.brand-logo.right.blue-grey-text.text-darken-4', { onclick: openSideNav }, [
                                                 m('span.brand-name', 'Bible Scout'),
                                                 m('i.right.bible-scout-logo-binoculars-view')
                                             ]),
@@ -66,8 +66,8 @@ export const NavComponent = () => {
                                                             href: '#!/home',
                                                             onclick: closeSideNav
                                                         }, [
-                                                                m('i.material-icons', 'home')
-                                                            ]
+                                                            m('i.material-icons', 'home')
+                                                        ]
                                                         )]
                                                     ),
                                                     m('li',
@@ -76,8 +76,8 @@ export const NavComponent = () => {
                                                             href: '#!/settings',
                                                             onclick: closeSideNav
                                                         }, [
-                                                                m('i.material-icons', 'settings')
-                                                            ]
+                                                            m('i.material-icons', 'settings')
+                                                        ]
                                                         )]
                                                     ),
                                                     m('li',
@@ -123,8 +123,8 @@ export const NavComponent = () => {
                                                     [m('a.navigation__link.blue-grey-text.text-darken-4', {
                                                         onclick: openSideNav
                                                     }, [
-                                                            m('i.material-icons', 'menu')
-                                                        ]
+                                                        m('i.material-icons', 'menu')
+                                                    ]
                                                     )]
                                                 )
                                             ]),
@@ -138,7 +138,8 @@ export const NavComponent = () => {
                                             [
                                                 m('a.breadcrumb.blue-grey-text.text-darken-4', [
                                                     m('i.material-icons', getIconForCurrentRoute()),
-                                                    m('h1', kebabToCapitalizedTitle(m.route.get().split('/')[1]))
+                                                    m('h1', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? '' : 'read-card-heading' },
+                                                        kebabToCapitalizedTitle(m.route.get().split('/')[1]))
                                                 ]),
 
                                                 m('a.breadcrumb.blue-grey-text.text-darken-4', { class: getIconForCurrentRoute() == 'settings' || getIconForCurrentRoute() == 'info' || getIconForCurrentRoute() == 'home' ? 'hide' : '' },
@@ -161,18 +162,18 @@ export const NavComponent = () => {
                                 [m('a.navigation__link[href="#!/home"]', {
                                     onclick: closeSideNav
                                 }, [
-                                        m('i.material-icons', 'home'),
-                                        m('span', 'Home')
-                                    ]
+                                    m('i.material-icons', 'home'),
+                                    m('span', 'Home')
+                                ]
                                 )]
                             ),
                             m('li',
                                 [m('a.navigation__link[href="#!/law-and-prophets"]', {
                                     onclick: closeSideNav
                                 }, [
-                                        m('i.material-icons', 'receipt'),
-                                        m('span', 'Law and Prophets')
-                                    ]
+                                    m('i.material-icons', 'receipt'),
+                                    m('span', 'Law and Prophets')
+                                ]
                                 )]
                             ),
                             m('li',
@@ -180,9 +181,9 @@ export const NavComponent = () => {
                                     {
                                         onclick: closeSideNav
                                     }, [
-                                        m('i.material-icons', 'event_seat'),
-                                        m('span', 'Wisdom')
-                                    ]
+                                    m('i.material-icons', 'event_seat'),
+                                    m('span', 'Wisdom')
+                                ]
                                 )]
                             ),
                             m('li',
@@ -190,9 +191,9 @@ export const NavComponent = () => {
                                     {
                                         onclick: closeSideNav
                                     }, [
-                                        m('i.material-icons', 'games'),
-                                        m('span', 'Gospels')
-                                    ]
+                                    m('i.material-icons', 'games'),
+                                    m('span', 'Gospels')
+                                ]
                                 )]
                             ),
                             m('li',
@@ -200,27 +201,27 @@ export const NavComponent = () => {
                                     {
                                         onclick: closeSideNav
                                     }, [
-                                        m('i.material-icons', 'mail'),
-                                        m('span', 'Epistles')
-                                    ]
+                                    m('i.material-icons', 'mail'),
+                                    m('span', 'Epistles')
+                                ]
                                 )]
                             ),
                             m('li',
                                 [m('a.navigation__link[href="#!/settings"]', {
                                     onclick: closeSideNav
                                 }, [
-                                        m('i.material-icons', 'settings'),
-                                        m('span', 'Settings')
-                                    ]
+                                    m('i.material-icons', 'settings'),
+                                    m('span', 'Settings')
+                                ]
                                 )]
                             ),
                             m('li',
                                 [m('a.navigation__link[href="#!/about"]', {
                                     onclick: closeSideNav
                                 }, [
-                                        m('i.material-icons', 'info'),
-                                        m('span', 'About')
-                                    ]
+                                    m('i.material-icons', 'info'),
+                                    m('span', 'About')
+                                ]
                                 )]
                             )
                         ]
