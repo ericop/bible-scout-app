@@ -240,7 +240,7 @@ label.done {
     height: 4rem;
   }
 
-  .nav-wrapper.orange a.breadcrumb span {
+  .nav-wrapper.orange a.breadcrumb span, .nav-wrapper.orange a.breadcrumb h1 {
     display: inline-block;
     max-width: 6.5rem;
     white-space: nowrap;
