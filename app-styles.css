@@ -154,6 +154,16 @@ main {
   width: 2.5em;
 }
 
+.bible-scout-logo-checkbox-cross {
+  background-image: url('/media/bible-scout-checkbox-cross.svg');
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover;
+  height: 0;
+  padding: 0;
+  padding-bottom: calc(100%);
+}
+
 .bible-scout-logo-binoculars {
   background-image: url('/media/bible-scout-icon-binoculars.svg');
   background-repeat: no-repeat;
