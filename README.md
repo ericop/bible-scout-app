@@ -12,13 +12,13 @@ https://BibleScout.app finding your way through the scriptures one reading at a 
 
 ## Road Map of Future Features
 - [x] Allow resetting your reading progress 
-- [] Add other languages (Spanish, French, Mandarin, etc. )
-- [] Fix service work PWA to only suggest updates when new version is ready (falsy says new version is ready currently)
-- [] Add additional reading plans (https://biblestudytogether.com/top-best-bible-reading-plans/)
-  - [] [Book-at-a-Time Bible Reading Plan](https://www.navigators.org/resource/bible-reading-plans/)
-  - [] [5x5x5 New Testament Bible Reading Plan](https://www.navigators.org/resource/bible-reading-plans/) 
-  - [] [Robert Murray M’Cheyne Bible Reading Plan](https://www.crossway.org/articles/download-a-free-bible-reading-plan-for-2017/)
-  - [] 5 Day Bible Reading Program
-  - [] [Chronologically Thematic One Year Reading Plan](https://treasureinthebible.com/UndatedThematicallyChronologicalBible%20ReadingPlanRevised2012-11-13.pdf)
-  - [] (Crossways Chronological Bible Reading Plan](https://www.crossway.org/articles/download-a-free-bible-reading-plan-for-2017/)
-- [] Partner with others to make visual ? (https://visualunit.me/)
+- [ ] Add other languages (Spanish, French, Mandarin, etc. )
+- [ ] Fix service work PWA to only suggest updates when new version is ready (falsy says new version is ready currently)
+- [ ] Add additional reading plans (https://biblestudytogether.com/top-best-bible-reading-plans/)
+  - [ ] [Book-at-a-Time Bible Reading Plan](https://www.navigators.org/resource/bible-reading-plans/)
+  - [ ] [5x5x5 New Testament Bible Reading Plan](https://www.navigators.org/resource/bible-reading-plans/) 
+  - [ ] [Robert Murray M’Cheyne Bible Reading Plan](https://www.crossway.org/articles/download-a-free-bible-reading-plan-for-2017/)
+  - [ ] 5 Day Bible Reading Program
+  - [ ] [Chronologically Thematic One Year Reading Plan](https://treasureinthebible.com/UndatedThematicallyChronologicalBible%20ReadingPlanRevised2012-11-13.pdf)
+  - [ ] (Crossways Chronological Bible Reading Plan](https://www.crossway.org/articles/download-a-free-bible-reading-plan-for-2017/)
+- [ ] Partner with others to make visual ? (https://visualunit.me/)
