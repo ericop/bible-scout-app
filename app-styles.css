@@ -91,7 +91,10 @@ main {
 
 /* Uses a transparent header that draws on top of the layout's background */
 .bible-background {
-  background: url("../media/bible-open-to-john.jpg") center / cover;
+  background: url("../media/bible-open-to-john.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
 }
 
 .card div.card-action a {
@@ -157,11 +160,13 @@ main {
 .bible-scout-logo-checkbox-cross {
   background-image: url('/media/bible-scout-checkbox-cross.svg');
   background-repeat: no-repeat;
-  width: 100%;
-  background-size: cover;
-  height: 0;
-  padding: 0;
-  padding-bottom: calc(100%);
+  width: 2.75em;
+}
+
+.bible-scout-logo-checkbox-cross-negative {
+  background-image: url('/media/bible-scout-checkbox-cross-negative.svg');
+  background-repeat: no-repeat;
+  width: 2.75em;
 }
 
 .bible-scout-logo-binoculars {
