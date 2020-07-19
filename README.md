@@ -8,7 +8,7 @@ https://BibleScout.app finding your way through the scriptures one reading at a 
 - Delete background transparency with https://www.getpaint.net/index.html
 - Turn png to svg with https://convertio.co/png-svg/
 - Minify svg with https://jakearchibald.github.io/svgomg/
-- Add `reserveAspectRatio="xMidYMid meet"` as attribute in SVG
+- Add `reserveAspectRatio="xMidYMid meet" fill="#263238" stroke="none"` as attributes in SVG
 
 ## Road Map of Future Features
 - [x] Allow resetting your reading progress 
