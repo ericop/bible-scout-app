@@ -149,6 +149,26 @@ export const ReadingCardComponent = () => {
         preFetchNextReadingMedia()
     }
 
+    let incrementReadingCategory = () => {
+        let readingCategory = m.route.get().split('/')[1]
+        incrementLocalStoreOnly()
+
+        switch (readingCategory) {
+            case 'law-and-prophets':
+                m.route.set('/wisdom')
+                break;
+            case 'wisdom':
+                m.route.set('/gospels')
+                break;
+            case 'gospels':
+                m.route.set('/epistles')
+                break;
+            case 'epistles':
+                m.route.set('/home')
+                break;
+        }
+    }
+
     let decrement = () => {
         if (isPlayingAudio) {
             pauseAudio()
@@ -214,121 +234,131 @@ export const ReadingCardComponent = () => {
         },
 
         view: () => {
-            return m('.row', [
-                m('.col.s12.m12', [
-                    m(
-                        '.card',
-                        {
-                            class: settingsService.getIsDarkMode() ? 'blue-grey darken-3' : 'white',
-                        },
-                        [
-                            m('.card-image', [
-                                m('img.max-height-5em', { src: '/media/card-top.png' }),
-                                m('div.card-title blue-grey-text text-darken-4', [
-                                    bibleVerse,
-                                    m('audio#mp3-player', {
-                                        class: isLoadingAudioPath && !isLoading ? 'hide' : 'right',
-                                        controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
-                                        preload: true,
-                                        src: bibleService.getAudioFile(`${audioBaseUrl}${audioPath}`),
-                                    }),
-                                    m('audio#mp3-player', {
-                                        class: 'hide',
-                                        controls: 'true',
-                                        preload: true,
-                                        src: bibleService.getAudioFile(`${audioBaseUrl}${nextAudioPath}`),
-                                    }),
+            return m('.card-and-app-bottom', [
+                m('.row', [
+                    m('.col.s12.m12', [
+                        m(
+                            '.card',
+                            {
+                                class: settingsService.getIsDarkMode() ? 'blue-grey darken-3' : 'white',
+                            },
+                            [
+                                m('.card-image', [
+                                    m('img.max-height-5em', { src: '/media/card-top.png' }),
+                                    m('div.card-title blue-grey-text text-darken-4', [
+                                        bibleVerse,
+                                        m('audio#mp3-player', {
+                                            class: isLoadingAudioPath && !isLoading ? 'hide' : 'right',
+                                            controls: `isLoadingAudioPath || isLoading ? '' : 'true'`,
+                                            preload: true,
+                                            src: bibleService.getAudioFile(`${audioBaseUrl}${audioPath}`),
+                                        }),
+                                        m('audio#mp3-player', {
+                                            class: 'hide',
+                                            controls: 'true',
+                                            preload: true,
+                                            src: bibleService.getAudioFile(`${audioBaseUrl}${nextAudioPath}`),
+                                        }),
+                                    ]),
+                                    m(
+                                        'a.btn-floating.waves-effect.waves-light.btn-large.halfway-fab.teal.accent-1',
+                                        {
+                                            disabled: isLoading,
+                                            class: isPlayingAudio ? 'hide' : '',
+                                            onclick: () => playAudio(),
+                                        },
+                                        m('i.material-icons.blue-grey-text.text-darken-4', 'play_arrow')
+                                    ),
+                                    m(
+                                        'a.btn-floating.waves-effect.waves-light.btn-large.halfway-fab.orange.darken-3',
+                                        {
+                                            disabled: isLoading,
+                                            class: isPlayingAudio ? '' : 'hide',
+                                            onclick: () => pauseAudio(),
+                                        },
+                                        m('i.material-icons', 'pause')
+                                    ),
                                 ]),
                                 m(
-                                    'a.btn-floating.waves-effect.waves-light.btn-large.halfway-fab.teal.accent-1',
+                                    '.card-content',
                                     {
-                                        disabled: isLoading,
-                                        class: isPlayingAudio ? 'hide' : '',
-                                        onclick: () => playAudio(),
+                                        class: settingsService.getIsDarkMode() ? 'white-text' : '',
                                     },
-                                    m('i.material-icons.blue-grey-text.text-darken-4', 'play_arrow')
-                                ),
-                                m(
-                                    'a.btn-floating.waves-effect.waves-light.btn-large.halfway-fab.orange.darken-3',
-                                    {
-                                        disabled: isLoading,
-                                        class: isPlayingAudio ? '' : 'hide',
-                                        onclick: () => pauseAudio(),
-                                    },
-                                    m('i.material-icons', 'pause')
-                                ),
-                            ]),
-                            m(
-                                '.card-content',
-                                {
-                                    class: settingsService.getIsDarkMode() ? 'white-text' : '',
-                                },
-                                [
-                                    m('.progress', { class: !isLoading ? 'hide' : '' }, [m('.indeterminate')]),
-                                    m(
-                                        '.bible-card-text',
-                                        { class: settingsService.getFontSize() },
-                                        text.map(v => {
-                                            return m('span.verse', [
-                                                v.verseNum == 1 ? m('span', [m('br'), m('strong.verseChapter', `${v.chapter} `)]) : '',
-                                                m('sup.verseNum', `${v.verseNum} `),
-                                                v.text,
-                                            ])
-                                        })
-                                    ),
-                                    // m(
-                                    //     "a.btn-floating btn-large halfway-fab waves-effect waves-light amber accent-4",
-                                    //     {
-                                    //         disabled: isLoading,
-                                    //         onclick: () => increment(),
-                                    //     },
-                                    //     m("i.material-icons blue-grey-text text-darken-4", "navigate_next")
-                                    // ),
-                                    m('form.card-actions.button-nav-group', [
+                                    [
+                                        m('.progress', { class: !isLoading ? 'hide' : '' }, [m('.indeterminate')]),
                                         m(
-                                            'button.waves-effect.waves-light.btn.amber.accent-3.blue-grey-text.text-darken-4',
-                                            {
-                                                disabled: isLoading,
-                                                class: isVeryBeginning() ? 'hide' : '',
-                                                onclick: () => decrement(),
-                                            },
-                                            `Previous Reading`
-                                        ),
-                                        m(
-                                            'button.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
-                                            {
-                                                disabled: isLoading,
-                                                onclick: () => increment(),
-                                            },
-                                            `Next Reading`
-                                        ),
-                                        m(
-                                            'label.done',
-                                            {
-                                                disabled: isLoading,
-                                                onclick: () => incrementLocalStoreOnly(),
-                                            },
-                                            [
-                                                m('input[type="checkbox"]'),
-                                                m('span', { class: settingsService.getIsDarkMode() ? 'white-text' : 'black-text' }, 'Done'),
-                                            ]
-                                        ),
-                                    ]),
-                                ]
-                            ),
-                            m(
-                                '.card-action',
-                                m(
-                                    'a',
-                                    {
-                                        class: settingsService.getIsDarkMode() ? 'orange-text text-lighten-2' : 'blue-grey-text text-darken-4',
-                                        href: '#', // home
-                                    },
-                                    [m('i.material-icons', 'home'), m('span.action-words', 'Back Home')]
+                                            '.bible-card-text',
+                                            { class: settingsService.getFontSize() },
+                                            text.map(v => {
+                                                return m('span.verse', [
+                                                    v.verseNum == 1 ? m('span', [m('br'), m('strong.verseChapter', `${v.chapter} `)]) : '',
+                                                    m('sup.verseNum', `${v.verseNum} `),
+                                                    v.text,
+                                                ])
+                                            })
+                                        )
+                                    ]
                                 )
-                            ),
-                        ]
+                            ]
+                        ),
+                    ]),
+                ]),
+                m('.app-bar-bottom.amber.accent-4', [
+                    m('form.card-actions.button-nav-group', [
+                        m(
+                            'a.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            {
+                                href: '#', // home
+                                //onclick='window.location.href="#"' // home
+                            },
+                            m('i.material-icons', 'home')
+                        ),
+                        m(
+                            'button.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            {
+                                disabled: isLoading,
+                                class: isVeryBeginning() ? 'hide' : '',
+                                onclick: () => decrement(),
+                            },
+                            m('i.material-icons', 'chevron_left')
+                        ),
+                        m(
+                            'button.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            {
+                                disabled: isLoading,
+                                onclick: () => increment(),
+                            },
+                            m('i.material-icons', 'chevron_right')
+                        ),
+                        m(
+                            'label.done',
+                            {
+                                disabled: isLoading,
+                                onclick: () => incrementLocalStoreOnly(),
+                            },
+                            [m('input[type="checkbox"]'), m('span.black-text', 'Done')]
+                        ),
+                        m(
+                            'button.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            {
+                                disabled: isLoading,
+                                onclick: () => incrementReadingCategory(),
+                            },
+                            m('i.material-icons', 'skip_next')
+                        ),
+                    ]),
+                    m(
+                        '.card-action',
+                        m(
+                            'a',
+                            {
+                                class: settingsService.getIsDarkMode() ? 'orange-text text-lighten-2' : 'blue-grey-text text-darken-4',
+                                href: '#', // home
+                            },
+                            [m('i.material-icons', 'home'), m('span.action-words', 'Back Home')]
+                        )
                     ),
+                    m('.btn.halfway-fab', m('i.material-icons', 'play_arrow')),
                 ]),
             ])
         },
