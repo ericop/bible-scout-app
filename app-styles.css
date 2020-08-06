@@ -545,3 +545,10 @@ audio#mp3-player {
   }
   
 }
+
+/* tiny mobile device  */
+@media (max-width: 380px) {
+  audio#mp3-player {
+    max-width: 4.5em;
+  }
+}
