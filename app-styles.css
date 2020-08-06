@@ -547,8 +547,8 @@ audio#mp3-player {
 }
 
 /* tiny mobile device  */
-@media (max-width: 380px) {
+@media (max-width: 400px) {
   audio#mp3-player {
-    max-width: 4.5em;
+    max-width: 3.75em;
   }
 }

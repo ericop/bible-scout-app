@@ -1,4 +1,4 @@
-var staticCacheName = 'bible-scout-cache-update-and-refresh-v0.9.8'
+var staticCacheName = 'bible-scout-cache-update-and-refresh-v0.9.9'
 // from https://serviceworke.rs/strategy-cache-update-and-refresh_service-worker_doc.html
 //   and https://github.com/jakearchibald/wittr/blob/task-clean-db/public/js/sw/index.js 
 self.addEventListener('install', function (event) {
