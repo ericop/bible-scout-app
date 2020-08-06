@@ -249,6 +249,19 @@ label.done {
   padding-left: 1rem;
 }
 
+.bottom-app-bar {
+  /* to do later https://stackoverflow.com/questions/55606944/how-to-implement-the-new-material-design-bottom-app-bar/55608463#55608463 */
+}
+
+.card-image > img.max-height-5em {
+  max-height: 5em;
+}
+
+audio#mp3-player {
+  max-height: 1.5em;
+}
+
+/* mobile device  */
 @media (max-width: 768px) {
   .nav-second-row .nav-wrapper.orange {
     height: 4rem;
@@ -275,6 +288,10 @@ label.done {
 
   .nav-wrapper.orange a.breadcrumb h1.read-card-heading {
     padding-bottom: 3.3rem;
+  }
+
+  audio#mp3-player {
+    max-width: 7em;
   }
   
 }
