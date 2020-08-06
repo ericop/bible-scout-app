@@ -323,7 +323,7 @@ audio#mp3-player {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ffab00; 
+  background-color: #ff9800; 
   clip-path: polygon(0 0, 
     calc(100% - 48px - 38px) 0, 
     calc(100% - 48px - 37.487665px) 0.628287px, 
@@ -547,7 +547,7 @@ audio#mp3-player {
 }
 
 /* tiny mobile device  */
-@media (max-width: 400px) {
+@media (max-width: 380px) {
   audio#mp3-player {
     max-width: 3.75em;
   }
