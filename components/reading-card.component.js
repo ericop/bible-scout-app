@@ -288,7 +288,7 @@ export const ReadingCardComponent = () => {
                 m('.app-bar-bottom', [
                     m('form.card-actions.button-nav-group', [
                         m(
-                            'a.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            'a.btn-flat.waves-effect.waves-light.btn.orange.blue-grey-text.text-darken-4',
                             {
                                 href: '#', // home
                                 //onclick='window.location.href="#"' // home
@@ -296,7 +296,7 @@ export const ReadingCardComponent = () => {
                             m('i.material-icons', 'home')
                         ),
                         m(
-                            'button.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            'button.btn-flat.waves-effect.waves-light.btn.orange.blue-grey-text.text-darken-4',
                             {
                                 disabled: isLoading,
                                 class: isVeryBeginning() ? 'hide' : '',
@@ -305,7 +305,7 @@ export const ReadingCardComponent = () => {
                             m('i.material-icons', 'chevron_left')
                         ),
                         m(
-                            'button.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            'button.btn-flat.waves-effect.waves-light.btn.orange.blue-grey-text.text-darken-4',
                             {
                                 disabled: isLoading,
                                 onclick: () => increment(),
@@ -321,7 +321,7 @@ export const ReadingCardComponent = () => {
                             [m('input[type="checkbox"]'), m('span.black-text')]
                         ),
                         m(
-                            'button.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
+                            'button.btn-flat.waves-effect.waves-light.btn.orange.blue-grey-text.text-darken-4',
                             {
                                 disabled: isLoading,
                                 onclick: () => incrementReadingCategory(),
