@@ -156,16 +156,16 @@ export const ReadingCardComponent = () => {
         switch (readingCategory) {
             case 'law-and-prophets':
                 m.route.set('/wisdom')
-                break;
+                break
             case 'wisdom':
                 m.route.set('/gospels')
-                break;
+                break
             case 'gospels':
                 m.route.set('/epistles')
-                break;
+                break
             case 'epistles':
                 m.route.set('/home')
-                break;
+                break
         }
     }
 
@@ -260,24 +260,6 @@ export const ReadingCardComponent = () => {
                                             src: bibleService.getAudioFile(`${audioBaseUrl}${nextAudioPath}`),
                                         }),
                                     ]),
-                                    m(
-                                        'a.btn-floating.waves-effect.waves-light.btn-large.halfway-fab.teal.accent-1',
-                                        {
-                                            disabled: isLoading,
-                                            class: isPlayingAudio ? 'hide' : '',
-                                            onclick: () => playAudio(),
-                                        },
-                                        m('i.material-icons.blue-grey-text.text-darken-4', 'play_arrow')
-                                    ),
-                                    m(
-                                        'a.btn-floating.waves-effect.waves-light.btn-large.halfway-fab.orange.darken-3',
-                                        {
-                                            disabled: isLoading,
-                                            class: isPlayingAudio ? '' : 'hide',
-                                            onclick: () => pauseAudio(),
-                                        },
-                                        m('i.material-icons', 'pause')
-                                    ),
                                 ]),
                                 m(
                                     '.card-content',
@@ -296,14 +278,14 @@ export const ReadingCardComponent = () => {
                                                     v.text,
                                                 ])
                                             })
-                                        )
+                                        ),
                                     ]
-                                )
+                                ),
                             ]
                         ),
                     ]),
                 ]),
-                m('.app-bar-bottom.amber.accent-4', [
+                m('.app-bar-bottom', [
                     m('form.card-actions.button-nav-group', [
                         m(
                             'a.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
@@ -336,7 +318,7 @@ export const ReadingCardComponent = () => {
                                 disabled: isLoading,
                                 onclick: () => incrementLocalStoreOnly(),
                             },
-                            [m('input[type="checkbox"]'), m('span.black-text', 'Done')]
+                            [m('input[type="checkbox"]'), m('span.black-text')]
                         ),
                         m(
                             'button.btn-flat.waves-effect.waves-light.btn.amber.accent-4.blue-grey-text.text-darken-4',
@@ -348,17 +330,23 @@ export const ReadingCardComponent = () => {
                         ),
                     ]),
                     m(
-                        '.card-action',
-                        m(
-                            'a',
-                            {
-                                class: settingsService.getIsDarkMode() ? 'orange-text text-lighten-2' : 'blue-grey-text text-darken-4',
-                                href: '#', // home
-                            },
-                            [m('i.material-icons', 'home'), m('span.action-words', 'Back Home')]
-                        )
+                        'a.btn.halfway-fab.waves-effect.waves-light.teal.accent-1',
+                        {
+                            disabled: isLoading,
+                            class: isPlayingAudio ? 'hide' : '',
+                            onclick: () => playAudio(),
+                        },
+                        m('i.material-icons.blue-grey-text.text-darken-4', 'play_arrow')
                     ),
-                    m('.btn.halfway-fab', m('i.material-icons', 'play_arrow')),
+                    m(
+                        'a.btn.halfway-fab.waves-effect.waves-light.btn-large.orange.darken-3',
+                        {
+                            disabled: isLoading,
+                            class: isPlayingAudio ? '' : 'hide',
+                            onclick: () => pauseAudio(),
+                        },
+                        m('i.material-icons', 'pause')
+                    ),
                 ]),
             ])
         },
