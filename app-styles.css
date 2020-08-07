@@ -552,11 +552,15 @@ audio#mp3-player {
 }
 
 /* tiny mobile device  */
-@media (max-width: 375px) {
+@media (max-width: 380px) {
 
   .nav-wrapper.orange a.breadcrumb h1 {
     max-width: 4rem;
   }
+
+  .card:last-of-type {
+    margin-bottom: 82px;
+  } 
 
   audio#mp3-player {
     max-width: 3em;
