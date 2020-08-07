@@ -191,8 +191,8 @@ main {
   margin-top: .75em;
 }
 .button-nav-group > * {
-  padding-left: 1.1em;
-  padding-right: 1.1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 
@@ -541,14 +541,29 @@ audio#mp3-player {
   }
 
   audio#mp3-player {
-    max-width: 6em;
+    max-width: 5.25em;
+  }
+
+  .button-nav-group > * {
+    padding-left: 1.1em;
+    padding-right: 1.1em;
   }
   
 }
 
 /* tiny mobile device  */
-@media (max-width: 380px) {
+@media (max-width: 375px) {
+
+  .nav-wrapper.orange a.breadcrumb h1 {
+    max-width: 4rem;
+  }
+
   audio#mp3-player {
-    max-width: 3.75em;
+    max-width: 3em;
+  }
+
+  .button-nav-group > * {
+    padding-left: .7em;
+    padding-right: .7em;
   }
 }
