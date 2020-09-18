@@ -296,7 +296,7 @@ audio#mp3-player {
   height: 56px;
   /* background-color: #1de9b6; */
   border-radius: 50%;
-  left: calc(100% - 48px);
+  left: calc(100% - 72px);
   top: -50%;
   transform: translateX(-50%);
   box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)
@@ -544,6 +544,31 @@ audio#mp3-player {
   .button-nav-group > * {
     padding-left: 1.1em;
     padding-right: 1.1em;
+  }
+
+  .app-bar-bottom .btn.halfway-fab{
+    padding: 0;
+    /* color: #37474f; */
+    box-sizing: content-box;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: 500;
+    justify-content: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    user-select: none;
+    outline: 0;
+    width: 56px;
+    height: 56px;
+    /* background-color: #1de9b6; */
+    border-radius: 50%;
+    left: calc(100% - 48px);
+    top: -50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)
   }
 
   .app-bar-bottom:before {
