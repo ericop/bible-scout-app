@@ -18,6 +18,7 @@ export const ReadingCardComponent = () => {
     let isPlayingAudio = false
     let bibleVerse = ''
     let isDoneChecked = false
+    let justChecked = false
     let readingProgress = { day: 1, month: 1 }
     let isVeryBeginning = () => {
         //console.log('readingDay', readingDay, ' < 2 && readingMonth ===', readingMonth)
@@ -68,8 +69,8 @@ export const ReadingCardComponent = () => {
 
     let incrementLocalStoreOnly = () => {
         isDoneChecked = document.querySelector('label.done > input').checked
-        console.log('isDoneChecked', isDoneChecked)
-
+        // console.log('isDoneChecked', isDoneChecked)
+        justChecked = isDoneChecked
         let readingMonthForLocalStore = readingMonth // 1 = Jan
         let readingDayForLocalStore = readingDay
 
@@ -87,12 +88,13 @@ export const ReadingCardComponent = () => {
                 readingDayForLocalStore++
             }
         }
-        console.log(
-            'readingCategory, readingMonthForLocalStore, readingDayForLocalStore)',
-            readingCategory,
-            readingMonthForLocalStore,
-            readingDayForLocalStore
-        )
+
+        // console.log(
+        //     'readingCategory, readingMonthForLocalStore, readingDayForLocalStore)',
+        //     readingCategory,
+        //     readingMonthForLocalStore,
+        //     readingDayForLocalStore
+        // )
         bibleService.setReadingProgress(readingCategory, readingMonthForLocalStore, readingDayForLocalStore)
     }
 
@@ -132,6 +134,10 @@ export const ReadingCardComponent = () => {
         if (isPlayingAudio) {
             pauseAudio()
         }
+        //console.log('increment:isDoneChecked', isDoneChecked)
+        isDoneChecked = false
+        justChecked = false
+
         let shouldGoForwardAMonth = readingDay === 25 && readingMonth < 12
         let shouldStartNewYear = readingDay === 25 && readingMonth === 12
 
@@ -173,6 +179,9 @@ export const ReadingCardComponent = () => {
         if (isPlayingAudio) {
             pauseAudio()
         }
+        //console.log('decrement:isDoneChecked', isDoneChecked)
+        isDoneChecked = true
+        justChecked = false
 
         let shouldGoBackAMonth = readingDay === 1 && readingMonth > 1
 
@@ -223,12 +232,11 @@ export const ReadingCardComponent = () => {
             }
         },
         oncreate: () => {
+            isDoneChecked = false
             readingProgress = bibleService.getReadingProgress(readingCategory)
-            //console.log('readingPlan RETURNED', readingProgress)
+            //console.log('oncreate: readingPlan RETURNED', readingCategory, readingProgress.month, readingProgress.day)
             readingMonth = readingProgress.month
             readingDay = readingProgress.day
-            //console.log('readingPlan readingMonth RETURNED', readingMonth)
-            //console.log('readingPlan readingDay RETURNED', readingDay)
             fetchAudioServerPath()
             setInitialData()
         },
@@ -266,6 +274,10 @@ export const ReadingCardComponent = () => {
                                     {
                                         class: settingsService.getIsDarkMode() ? 'white-text' : '',
                                     },
+                                    justChecked ? [
+                                        m('a.btn-flat.waves-effect.waves-light.btn.orange.blue-grey-text.text-darken-4',
+                                        m('i.material-icons', 'done_all')
+                                    ),] :
                                     [
                                         m('.progress', { class: !isLoading ? 'hide' : '' }, [m('.indeterminate')]),
                                         m(
@@ -298,8 +310,7 @@ export const ReadingCardComponent = () => {
                         m(
                             'button.btn-flat.waves-effect.waves-light.btn.orange.blue-grey-text.text-darken-4',
                             {
-                                disabled: isLoading,
-                                class: isVeryBeginning() ? 'hide' : '',
+                                disabled: isLoading || isVeryBeginning(),
                                 onclick: () => decrement(),
                             },
                             m('i.material-icons', 'chevron_left')
@@ -318,7 +329,12 @@ export const ReadingCardComponent = () => {
                                 disabled: isLoading,
                                 onclick: () => incrementLocalStoreOnly(),
                             },
-                            [m('input[type="checkbox"]'), m('span.black-text')]
+                            [
+                                (!isDoneChecked 
+                                    ? m('input[type="checkbox"]', {disabled: isLoading}) 
+                                    : m('input[type="checkbox"][checked]', {disabled: isLoading})),
+                                m('span.black-text')
+                            ]
                         ),
                         m(
                             'button.btn-flat.waves-effect.waves-light.btn.orange.blue-grey-text.text-darken-4',
