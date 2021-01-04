@@ -1,4 +1,4 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/ericop/bible-scout-app)
+[![Open BibleScout.App in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ericop/bible-scout-app)
 
 # Bible Scout
 https://BibleScout.app finding your way through the scriptures one reading at a time.
