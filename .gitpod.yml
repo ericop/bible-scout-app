@@ -1,3 +1,7 @@
 tasks:
   - init: npm install
     command: npm run dist
+
+vscode:
+  extensions:
+    - ritwickdey.liveserver@5.6.1:5Mhl1RgVVDcIym163x8r+w==
