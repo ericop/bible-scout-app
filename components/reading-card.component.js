@@ -17,6 +17,7 @@ export const ReadingCardComponent = () => {
     let nextAudioPath = ''
     let isPlayingAudio = false
     let bibleVerse = ''
+    let readingChapters = []
     let isDoneChecked = false
     let justChecked = false
     let readingProgress = { day: 1, month: 1 }
@@ -36,10 +37,20 @@ export const ReadingCardComponent = () => {
 
     let fetchAudioPath = (bibleVersion, book, verseString) => {
         isLoadingAudioPath = true
-        bibleService.getAudioPath(bibleVersion, book, verseString).then(data => {
-            audioPath = data[0] ? data[0].path : ''
-            isLoadingAudioPath = false
-        })
+
+        if (readingChapters > 1){
+            bibleService.getAudioPath(bibleVersion, book, verseString).then(data => {
+                audioPath = data[0] ? data[0].path : ''
+                isLoadingAudioPath = false
+            })
+
+        } else {
+            bibleService.getAudioPath(bibleVersion, book, verseString).then(data => {
+                audioPath = data[0] ? data[0].path : ''
+                isLoadingAudioPath = false
+            })
+        }
+
     }
 
     let fetchText = (bibleVerse, book, verseString) => {
@@ -61,7 +72,25 @@ export const ReadingCardComponent = () => {
         var verseInfo = bibleService.getDiscipleShipJournalVerse(readingMonth, readingDay, readingCategory)
         bibleVerse = verseInfo.verse
 
-        var [book, verseString] = verseInfo.verse.split(' ')
+        let [book, verseString] = verseInfo.verse.split(' ')
+        let hasVerses = verseString.indexOf(':') > -1
+        console.log('hasVerse', hasVerses)
+        let isMultiChapter = !hasVerses && verseString.indexOf('-') > -1
+        console.log('isMultiChapter', isMultiChapter, 'from', verseString)
+        let isSingleFullChapter = !hasVerses && !isMultiChapter
+        console.log('isSingleFullChapter', isSingleFullChapter)
+
+        if (isMultiChapter) {
+            let [startChapter, endChapter] = verseString.split('-').map(ch => Number(ch))
+            let chapterCount = endChapter - startChapter + 1
+            readingChapters = new Array(chapterCount).fill().map((ch, i) => (i + startChapter).toString())
+        } else {
+            readingChapters = isSingleFullChapter 
+            ? [verseString]
+            : [verseString.split(':')[0]]
+        }
+
+        console.log('readingChapters', readingChapters, 'from', verseString)
 
         fetchAudioPath(audioBibleVersion, book, verseString)
         fetchText(textBibleVersion, book, verseString)
@@ -261,7 +290,7 @@ export const ReadingCardComponent = () => {
                                             preload: true,
                                             src: bibleService.getAudioFile(`${audioBaseUrl}${audioPath}`),
                                         }),
-                                        m('audio#mp3-player', {
+                                        m('audio#mp3-player-pre-load', {
                                             class: 'hide',
                                             controls: 'true',
                                             preload: true,
