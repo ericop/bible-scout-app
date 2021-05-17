@@ -5,6 +5,9 @@ export const BibleMediaService = () => {
     let baseUrl = 'https://dbt.io'
     let azureCodeKey = 'UCgA0aEhZUMUtOmZV3WORgpB9EaJ05qLHJZV6EKPu/Ito84LKpLKsg=='
     let azureUrl = 'https://httpbiblereadingpalrequest.azurewebsites.net/api/v2'
+    let awsApiKey = 'Genesis1-2InTheBeginningGodCreated'
+    let awsUrl = 'https://dcu73qiiyi.execute-api.us-east-2.amazonaws.com/default/bible-scout-proxy'
+
 
     let initialReadingProgress = { month: 1, day: 1 }
 
@@ -80,9 +83,10 @@ export const BibleMediaService = () => {
                 // console.log('dataReq', dataReq)
 
                 return m.request({
-                    method: 'GET',
-                    params: { urlText: urlText, code: azureCodeKey },
-                    url: azureUrl
+                    method: 'POST',
+                    headers: { "x-api-key": awsApiKey },
+                    params: { urlText: urlText},
+                    url: awsUrl
                 })
             }
 
@@ -95,11 +99,11 @@ export const BibleMediaService = () => {
             ////console.log('chaps', chapters)
             chapters.forEach(chapter => {
                 promiseArray.push(m.request({
-                    method: 'GET',
-                    url: azureUrl,
+                    method: 'POST',
+                    headers: { "x-api-key": awsApiKey },
+                    url: awsUrl,
                     params: {
-                        urlText: `${baseUrl}/text/verse?reply=json&v=2&dam_id=${bibleVersion}&book_id=${book}&chapter_id=${chapter}`,
-                        code: azureCodeKey
+                        urlText: `${baseUrl}/text/verse?reply=json&v=2&dam_id=${bibleVersion}&book_id=${book}&chapter_id=${chapter}`
                     }
                 }))
             })
@@ -117,12 +121,11 @@ export const BibleMediaService = () => {
         getAudioServerPath: () => {
 
             return m.request({
-                method: 'GET',
-
-                url: azureUrl,
+                method: 'POST',
+                headers: { "x-api-key": awsApiKey },
+                url: awsUrl,
                 params: {
-                    urlText: `${baseUrl}/audio/location?protocol=http&reply=json&v=2`,
-                    code: azureCodeKey
+                    urlText: `${baseUrl}/audio/location?protocol=http&reply=json&v=2`
                 }
             })
         },
@@ -134,11 +137,11 @@ export const BibleMediaService = () => {
             //console.log('verseObj', verseObj)
             // for now ignore verseString, just pulling back first chapter
             return m.request({
-                method: 'GET',
-                url: azureUrl,
+                method: 'POST',
+                headers: { "x-api-key": awsApiKey },
+                url: awsUrl,
                 params: {
-                    urlText: `${baseUrl}/audio/path?dam_id=${bibleVersion}&book_id=${book}&v=2&chapter_id=${verseObj.firstChapter}`,
-                    code: azureCodeKey
+                    urlText: `${baseUrl}/audio/path?dam_id=${bibleVersion}&book_id=${book}&v=2&chapter_id=${verseObj.firstChapter}`
                 }
             })
         },
