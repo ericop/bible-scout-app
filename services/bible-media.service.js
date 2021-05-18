@@ -83,8 +83,8 @@ export const BibleMediaService = () => {
                 // console.log('dataReq', dataReq)
 
                 return m.request({
-                    method: 'POST',
-                    headers: { "x-api-key": awsApiKey },
+                    method: 'GET',
+                    headers: { "x-api-key": awsApiKey},
                     params: { urlText: urlText},
                     url: awsUrl
                 })
@@ -96,11 +96,11 @@ export const BibleMediaService = () => {
             }
 
             var promiseArray = [];
-            ////console.log('chaps', chapters)
+            // console.log('chaps', chapters)
             chapters.forEach(chapter => {
                 promiseArray.push(m.request({
-                    method: 'POST',
-                    headers: { "x-api-key": awsApiKey },
+                    method: 'GET',
+                    headers: { "x-api-key": awsApiKey},
                     url: awsUrl,
                     params: {
                         urlText: `${baseUrl}/text/verse?reply=json&v=2&dam_id=${bibleVersion}&book_id=${book}&chapter_id=${chapter}`
@@ -121,8 +121,8 @@ export const BibleMediaService = () => {
         getAudioServerPath: () => {
 
             return m.request({
-                method: 'POST',
-                headers: { "x-api-key": awsApiKey },
+                method: 'GET',
+                headers: { "x-api-key": awsApiKey},
                 url: awsUrl,
                 params: {
                     urlText: `${baseUrl}/audio/location?protocol=http&reply=json&v=2`
@@ -137,8 +137,8 @@ export const BibleMediaService = () => {
             //console.log('verseObj', verseObj)
             // for now ignore verseString, just pulling back first chapter
             return m.request({
-                method: 'POST',
-                headers: { "x-api-key": awsApiKey },
+                method: 'GET',
+                headers: { "x-api-key": awsApiKey},
                 url: awsUrl,
                 params: {
                     urlText: `${baseUrl}/audio/path?dam_id=${bibleVersion}&book_id=${book}&v=2&chapter_id=${verseObj.firstChapter}`
