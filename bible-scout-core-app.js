@@ -1,26 +1,11 @@
 import {NavComponent} from './components/nav.component.js'
 import {SettingsComponent} from './components/settings.component.js'
-// import {ReadingCardComponent} from './components/reading-card.component.js'
 import {LawAndProphetsComponent} from './components/law-and-prophets.component.js'
 import {GospelsComponent} from './components/gospels.component.js'
 import {WisdomComponent} from './components/wisdom.component.js'
 import {EpistlesComponent} from './components/epistles.component.js'
 import {HomeComponent} from './components/home.component.js'
 import {AboutComponent} from './components/about.component.js'
-
-// not needed data/esv-book.data.js 
-// x data/discipleship-journal-plan.data.js 
-// services/bible-media.service.js 
-// components/settings.component.js 
-// components/reading-card.component.js 
-// components/law-and-prophets.component.js 
-// components/nav.component.js 
-// components/gospels.component.js 
-// components/wisdom.component.js 
-// components/epistles.component.js 
-// components/home.component.js 
-// components/about.component.js 
-// bible-scout-core-app.js
 
 const LayoutComponent = {
     view: (vnode) => {
@@ -36,7 +21,7 @@ const LayoutComponent = {
 window.addEventListener('scroll', (e) => {
     const secondRowNavClasses = ' nav-wrapper nav-with-breadcrumb orange'
     const secondRow = document.querySelector(secondRowNavClasses.split(' ').join('.'))
-    // TODO scroll needs a little help now that sticky app footer is in place and <main> is actually scrolling
+    // TODO: scroll needs a little help now that sticky app footer is in place and <main> is actually scrolling
     const secondRowClassValue = window.scrollY > 50
         ? `${secondRowNavClasses} is-scrolled-down z-depth-3`
         : secondRowNavClasses
