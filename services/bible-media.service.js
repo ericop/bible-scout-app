@@ -1,4 +1,4 @@
-////import {DiscipleshipJournalReadingPlanData} from '../data/discipleship-journal-plan.data.js'
+import {DiscipleshipJournalReadingPlanData} from '../data/discipleship-journal-plan.data.js'
 
 export const BibleMediaService = () => {
     let djPlan = DiscipleshipJournalReadingPlanData

@@ -1,4 +1,4 @@
-//import {BibleMediaService} from '../services/bible-media.service.js'
+import {BibleMediaService} from '../services/bible-media.service.js'
 
 export const SettingsComponent = () => {
     let isDarkMode = true

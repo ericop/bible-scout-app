@@ -1,5 +1,4 @@
-//import {SettingsComponent} from '../components/settings.component.js'
-
+import {SettingsComponent} from '../components/settings.component.js'
 
 export const AboutComponent = () => {
     let settingsService = SettingsComponent()

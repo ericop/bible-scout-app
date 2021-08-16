@@ -1,5 +1,5 @@
-//import {BibleMediaService} from '../services/bible-media.service.js'
-//import {SettingsComponent} from '../components/settings.component.js'
+import {BibleMediaService} from '../services/bible-media.service.js'
+import {SettingsComponent} from '../components/settings.component.js'
 
 export const ReadingCardComponent = () => {
     let audioBibleVersion = ''

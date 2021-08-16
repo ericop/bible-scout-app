@@ -1,4 +1,4 @@
-//import {ReadingCardComponent} from '../components/reading-card.component.js'
+import {ReadingCardComponent} from '../components/reading-card.component.js'
 
 export const LawAndProphetsComponent = () => {
     return {

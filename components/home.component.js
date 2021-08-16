@@ -1,4 +1,6 @@
-//import {SettingsComponent} from '../components/settings.component.js'
+import {AboutComponent} from '../components/about.component.js'
+import {SettingsComponent} from '../components/settings.component.js'
+import {BibleMediaService} from '../services/bible-media.service.js'
 
 export const HomeComponent = () => {
     let settingsService = SettingsComponent()

@@ -4,12 +4,15 @@
   "description": "The Bible Scout App was created to help you scout (to examine, seek and observe) what is in the Holy Bible. It leads you to read through the Bible using a few different reading plans, and to support hundreds of global languages. Your reading progress will be tracked only on your local device, so no accounts are needed, allowing users from around the world anonymous access to the tool in a way that protect their privacy.",
   "main": "bible-scout-core-app.js",
   "dependencies": {
+    "esbuild": "^0.12.20",
     "terser": "^4.3.1"
   },
   "devDependencies": {},
   "scripts": {
-    "dist": "terser data/esv-book.data.js data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o dist/biblescout.min.js --ecma 6 --module",
-    "dist-compress-mangle": "terser data/esv-book.data.js data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o dist/biblescout.min.js -m -c --ecma 6 --module"
+    "dist": "terser data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o dist/biblescout.min.js --ecma 6 --module",
+    "dist-compress-mangle": "terser data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o dist/biblescout.min.js -m -c --ecma 6 --module",
+    "build-dev": "esbuild bible-scout-core-app.js --bundle --outfile=dist/biblescout.js",
+    "build": "esbuild bible-scout-core-app.js --bundle --minify --sourcemap --outfile=dist/biblescout.min.js"
   },
   "repository": {
     "type": "git",
