@@ -1,3 +1,4 @@
+// Draft: for possible future use for singular external state. State management using meiosis
 //  https://tinyurl.com/v9ez7jk for an example of meiosis without streams
 export const MyClass = data => {
 const self = data
