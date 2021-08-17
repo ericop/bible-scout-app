@@ -12,7 +12,8 @@
     "dist": "terser data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o dist/biblescout.min.js --ecma 6 --module",
     "dist-compress-mangle": "terser data/discipleship-journal-plan.data.js services/bible-media.service.js components/settings.component.js components/reading-card.component.js components/law-and-prophets.component.js components/nav.component.js components/gospels.component.js components/wisdom.component.js components/epistles.component.js components/home.component.js components/about.component.js bible-scout-core-app.js -o dist/biblescout.min.js -m -c --ecma 6 --module",
     "build-dev": "esbuild bible-scout-core-app.js --bundle --outfile=dist/biblescout.js",
-    "build": "esbuild bible-scout-core-app.js --bundle --minify --sourcemap --outfile=dist/biblescout.min.js"
+    "build": "esbuild bible-scout-core-app.js --bundle --minify --sourcemap --outfile=dist/biblescout.min.js",
+    "watch": "esbuild bible-scout-core-app.js --bundle --minify --sourcemap --outfile=dist/biblescout.min.js --watch"
   },
   "repository": {
     "type": "git",

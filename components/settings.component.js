@@ -46,33 +46,15 @@ export const SettingsComponent = () => {
     let clearReadingProgress = () => {
         categories.forEach(category => bibleService.setReadingProgress(category, 1, 1))
         isReadingProgressCleared = true
-        console.log('isReadingProgressCleared', isReadingProgressCleared)
     }
 
     let setReadingProgress = () => {
-        // let category = document.getElementById('category-select').value || 'wisdom'
-        // let month = parseInt(document.getElementById('month-select').value) || 1
-        // let day = parseInt(document.getElementById('day-select').value) || 1
-
-        // let category = 'wisdom'
-        // let month = 1
-        // let day = 1
-        // category options = ['law-and-prophets', 'wisdom', 'gospels', 'epistles']
         bibleService.setReadingProgress(categoryChoice, parseInt(monthChoice), parseInt(dayChoice))
         console.log(`setReadingProgress for '${categoryChoice}' to month '${monthChoice}' day '${dayChoice}'`)
     }
 
     let getReadingProgressVerse = () => {
-        // let category = document.getElementById('category-select').value
-        // let month = parseInt(document.getElementById('month-select').value)
-        // let day = parseInt(document.getElementById('day-select').value)
-
-        // let category = 'wisdom'
-        // let month = 1
-        // let day =  1
-        console.log(`Get Reading Progress to  '${categoryChoice}' to month '${monthChoice}' day '${dayChoice}'`)
         let verse = bibleService.getDiscipleShipJournalVerse(parseInt(monthChoice), parseInt(dayChoice), categoryChoice)
-        console.log('Get Reading Progress to ', verse)
         return verse.verse
     }
 
@@ -202,46 +184,6 @@ export const SettingsComponent = () => {
                                 }, 'Set Reading Progress'),
                                 m('br'),
                                 m('p', `> "${categoryChoice}" progress will jump to "${getReadingProgressVerse()}".`),
-                                m('br'),
-                                m('.card-title', 'Work In Progress Settings'),
-                                m('.switch',
-                                    m('label',
-                                        [
-                                            'Daily Reminders: off',
-                                            m('input[disabled][type="checkbox"]'),
-                                            m('span.lever'),
-                                            'on'
-                                        ]
-                                    )
-                                ),
-                                m('.row',
-                                    m('.col.s12',
-                                        [
-                                            m('.input-field.inline',
-                                                [
-                                                    m('i.material-icons.prefix', 'alarm'),
-                                                    m('input#reminder-time.validate[disabled][type="time"][value="07:30"]'),
-                                                    m('label[for="reminder-time"]',
-                                                        'Time'
-                                                    ),
-                                                    m('span.helper-text[data-error="wrong"][data-success="right"]',
-                                                        'Should be a proper time'
-                                                    )]
-                                            )
-                                        ]
-                                    )
-                                ),
-                                m('.switch',
-                                    m('label',
-                                        [
-                                            'Auto-Play Audio: off',
-                                            m('input[disabled][type="checkbox"]'),
-                                            m('span.lever'),
-                                            'on'
-                                        ]
-                                    )
-                                )
-
                             ]
                         ]),
                         m('.card-action',

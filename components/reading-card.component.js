@@ -22,16 +22,13 @@ export const ReadingCardComponent = () => {
     let justChecked = false
     let readingProgress = { day: 1, month: 1 }
     let isVeryBeginning = () => {
-        //console.log('readingDay', readingDay, ' < 2 && readingMonth ===', readingMonth)
         return readingDay < 2 && readingMonth === 1
     }
 
     let fetchAudioServerPath = () => {
         bibleService.getAudioServerPath().then(data => {
-            //console.log('data audio/location', data)
             var secondChoice = data[1]
             audioBaseUrl = `${secondChoice.protocol}://${secondChoice.server}${secondChoice.root_path}/`
-            //console.log('audioBaseUrl', audioBaseUrl)
         })
     }
 
@@ -50,7 +47,6 @@ export const ReadingCardComponent = () => {
                 isLoadingAudioPath = false
             })
         }
-
     }
 
     let fetchText = (bibleVerse, book, verseString) => {
@@ -58,7 +54,6 @@ export const ReadingCardComponent = () => {
         text = []
 
         bibleService.getText(bibleVerse, book, verseString).then(data => {
-            console.log('data', data)
             text = data.flat().map(item => {
                 return { chapter: item.chapter_id, verseNum: item.verse_id, text: item.verse_text, paragraphNum: item.paragraph_number }
             })
@@ -74,11 +69,8 @@ export const ReadingCardComponent = () => {
 
         let [book, verseString] = verseInfo.verse.split(' ')
         let hasVerses = verseString.indexOf(':') > -1
-        console.log('hasVerse', hasVerses)
         let isMultiChapter = !hasVerses && verseString.indexOf('-') > -1
-        console.log('isMultiChapter', isMultiChapter, 'from', verseString)
         let isSingleFullChapter = !hasVerses && !isMultiChapter
-        console.log('isSingleFullChapter', isSingleFullChapter)
 
         if (isMultiChapter) {
             let [startChapter, endChapter] = verseString.split('-').map(ch => Number(ch))
@@ -89,16 +81,13 @@ export const ReadingCardComponent = () => {
             ? [verseString]
             : [verseString.split(':')[0]]
         }
-
-        console.log('readingChapters', readingChapters, 'from', verseString)
-
+        // TODO: use `readingChapters` to fetch and stitch together multiple Audio chapters 
         fetchAudioPath(audioBibleVersion, book, verseString)
         fetchText(textBibleVersion, book, verseString)
     }
 
     let incrementLocalStoreOnly = () => {
         isDoneChecked = document.querySelector('label.done > input').checked
-        // console.log('isDoneChecked', isDoneChecked)
         justChecked = isDoneChecked
         let readingMonthForLocalStore = readingMonth // 1 = Jan
         let readingDayForLocalStore = readingDay
@@ -118,12 +107,6 @@ export const ReadingCardComponent = () => {
             }
         }
 
-        // console.log(
-        //     'readingCategory, readingMonthForLocalStore, readingDayForLocalStore)',
-        //     readingCategory,
-        //     readingMonthForLocalStore,
-        //     readingDayForLocalStore
-        // )
         bibleService.setReadingProgress(readingCategory, readingMonthForLocalStore, readingDayForLocalStore)
     }
 
@@ -163,7 +146,6 @@ export const ReadingCardComponent = () => {
         if (isPlayingAudio) {
             pauseAudio()
         }
-        //console.log('increment:isDoneChecked', isDoneChecked)
         isDoneChecked = false
         justChecked = false
 
@@ -208,7 +190,6 @@ export const ReadingCardComponent = () => {
         if (isPlayingAudio) {
             pauseAudio()
         }
-        //console.log('decrement:isDoneChecked', isDoneChecked)
         isDoneChecked = true
         justChecked = false
 
@@ -263,7 +244,6 @@ export const ReadingCardComponent = () => {
         oncreate: () => {
             isDoneChecked = false
             readingProgress = bibleService.getReadingProgress(readingCategory)
-            //console.log('oncreate: readingPlan RETURNED', readingCategory, readingProgress.month, readingProgress.day)
             readingMonth = readingProgress.month
             readingDay = readingProgress.day
             fetchAudioServerPath()
@@ -326,6 +306,7 @@ export const ReadingCardComponent = () => {
                         ),
                     ]),
                 ]),
+                // TODO: Split state and actions into external manager and make AppBarBottomComponent
                 m('.app-bar-bottom', [
                     m('form.card-actions.button-nav-group', [
                         m(

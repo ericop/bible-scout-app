@@ -1,3 +1,4 @@
+// Draft: for possible future use when determining how many audio chapters to grab
 export const EsvBookData = [
     {
         "dam_id": "ENGESVO1ET",

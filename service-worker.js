@@ -1,4 +1,4 @@
-var staticCacheName = 'bible-scout-cache-update-and-refresh-v0.9.13'
+var staticCacheName = 'bible-scout-cache-update-and-refresh-v0.9.14'
 // from https://serviceworke.rs/strategy-cache-update-and-refresh_service-worker_doc.html
 //   and https://github.com/jakearchibald/wittr/blob/task-clean-db/public/js/sw/index.js 
 self.addEventListener('install', function (event) {
@@ -22,8 +22,6 @@ self.addEventListener('activate', function (event) {
 })
 
 self.addEventListener('fetch', function (event) {
-  console.log('The service worker is serving the asset.')
-
   var requestUrl = new URL(event.request.url)
   // if (requestUrl.origin === location.origin) {
   //   if (requestUrl.pathname === '/') {
@@ -41,20 +39,16 @@ self.addEventListener('fetch', function (event) {
 })
 
 self.addEventListener('message', function(event) {
-  console.log('service worker event', event)
   if (event.data.action === 'skipWaiting') {
     self.skipWaiting()
   }
 
   // TODO: allow this to trigger from Settings Page
   if (event.data.action === 'clearAllCache') {
-    console.log('service worker action: clearAllCache', event)
     event.waitUntil(
       caches.keys().then(function (cacheNames) {
-        console.log('caches.keys() cacheNames', cacheNames)
         return Promise.all(
           cacheNames.map(function (cacheName) {
-            console.log('cacheNames.map cacheName', cacheName)
             return caches.delete(cacheName).then(function () {
               // Note the '173 MB used out of 586057 MB storage quota.' in Chrome  Dev Tools some times lags, 
               //  so check the Cache Storage itself to see that items are gone.

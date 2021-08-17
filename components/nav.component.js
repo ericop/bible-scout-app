@@ -6,10 +6,7 @@ export const NavComponent = () => {
     let readingProgress = { month: 1, day: 1 }
     const updateReadingProgress = () => readingProgress = bibleService.getReadingProgress(m.route.get().split('/')[1])
     const openSideNav = () => {
-        // //console.log('openSideNav before', sidenav)
         sidenav.open()
-        // //console.log('openSideNav after', sidenav)
-
     }
     const closeSideNav = () => sidenav.close()
     const getIconForCurrentRoute = () => {
@@ -36,7 +33,6 @@ export const NavComponent = () => {
     const kebabToCapitalizedTitle = (kebab) => kebab.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
 
     const isCurrentTopRoute = (route) => {
-        //console.log('route?', m.route.get().split('/'))
         return m.route.get().split('/')[1] === route
     }
     return {
@@ -46,7 +42,6 @@ export const NavComponent = () => {
 
         view: () => {
             return m('.whole-nav',
-
                 [
                     m('.navbar-fixed',
                         [
@@ -128,11 +123,8 @@ export const NavComponent = () => {
                                                     )]
                                                 )
                                             ]),
-
-
                                         ]
                                     ),
-
                                     m('.nav-wrapper.nav-with-breadcrumb.orange',
                                         m('.col.s12',
                                             [

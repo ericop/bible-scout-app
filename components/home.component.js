@@ -9,16 +9,7 @@ export const HomeComponent = () => {
 
         let progress = bibleService.getReadingProgress(category)
 
-        // let category = document.getElementById('category-select').value
-        // let month = parseInt(document.getElementById('month-select').value)
-        // let day = parseInt(document.getElementById('day-select').value)
-
-        // let category = 'wisdom'
-        // let month = 1
-        // let day =  1
-        console.log(`Get Reading Progress to  '${category}' to month '${progress.month}' day '${progress.day}'`)
         let verse = bibleService.getDiscipleShipJournalVerse(parseInt(progress.month), parseInt(progress.day), category)
-        console.log('Get Reading Progress to ', verse.verse)
         return `month ${progress.month} day ${progress.day} ⩫ ${verse.verse}`
     }
 
