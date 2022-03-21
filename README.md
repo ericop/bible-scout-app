@@ -22,7 +22,7 @@ https://BibleScout.app finding your way through the scriptures one reading at a 
 - [ ] Add other languages (Spanish, French, Mandarin, etc. )
 - [ ] Have Audio span multiple chapters
 - [ ] Upgrade to new API to allow audio of part of a chapter
-- [ ] Use Roll-up wor webpack for hot refresh and TypeScript
+- [ ] Use Roll-up or webpack for hot refresh and TypeScript
 - [ ] Convert state management to [meiosis and mergerino](http://meiosis.js.org/tutorial/05-meiosis-with-mergerino.html)
 - [ ] Fix service work PWA to only suggest updates when new version is ready (falsely says new version is ready on first load)
 - [ ] Add additional reading plans (https://biblestudytogether.com/top-best-bible-reading-plans/)
