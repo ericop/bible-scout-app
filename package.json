@@ -5,7 +5,7 @@
   "main": "bible-scout-core-app.js",
   "dependencies": {
     "esbuild": "^0.12.20",
-    "terser": "^4.3.1"
+    "terser": "^4.8.1"
   },
   "devDependencies": {},
   "scripts": {
