@@ -1,4 +1,5 @@
 [![Open BibleScout.App in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ericop/bible-scout-app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0bdfba70-1a04-4a86-be23-cb4c5aab11be/deploy-status)](https://app.netlify.com/sites/bible-scout-app/deploys)
 
 # Bible Scout
 https://BibleScout.app finding your way through the scriptures one reading at a time.
