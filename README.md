@@ -4,6 +4,9 @@
 https://BibleScout.app finding your way through the scriptures one reading at a time.
 
 ## Screenshot
+![image](https://github.com/ericop/bible-scout-app/assets/5218249/857874c6-14e9-471f-a96e-36a18896a6e1)
+
+Beta Screenshot
 ![Snip_2019-07-04_23h27m46s](https://user-images.githubusercontent.com/5218249/60696388-8c330800-9eb3-11e9-9f99-5e0a2cc60010.png)
 
 ## Instruction to run locally
