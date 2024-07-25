@@ -2,7 +2,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0bdfba70-1a04-4a86-be23-cb4c5aab11be/deploy-status)](https://app.netlify.com/sites/bible-scout-app/deploys)
 
 # Bible Scout
-[https://BibleScout.app](https://bible-scout-app.netlify.app](bible-scout-app.netlify.app) finding your way through the scriptures one reading at a time.
+https://bible-scout-app.netlify.app finding your way through the scriptures one reading at a time.
 
 ## Screenshot
 ![image](https://github.com/ericop/bible-scout-app/assets/5218249/857874c6-14e9-471f-a96e-36a18896a6e1)
