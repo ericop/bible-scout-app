@@ -4,7 +4,7 @@
   "description": "The Bible Scout App was created to help you scout (to examine, seek and observe) what is in the Holy Bible. It leads you to read through the Bible using a few different reading plans, and to support hundreds of global languages. Your reading progress will be tracked only on your local device, so no accounts are needed, allowing users from around the world anonymous access to the tool in a way that protect their privacy.",
   "main": "bible-scout-core-app.js",
   "dependencies": {
-    "esbuild": "^0.12.20",
+    "esbuild": "^0.25.0",
     "terser": "^4.3.1"
   },
   "devDependencies": {},
