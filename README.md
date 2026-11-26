@@ -1,8 +1,13 @@
-[![Open BibleScout.App in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ericop/bible-scout-app)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0bdfba70-1a04-4a86-be23-cb4c5aab11be/deploy-status)](https://app.netlify.com/sites/bible-scout-app/deploys)
-
 # Bible Scout
-https://bible-scout-app.netlify.app finding your way through the scriptures one reading at a time.
+Finding your way through the scriptures one reading at a time.
+
+## Retired (November 2026)
+Bible Scout is no longer running. The Azure Function and AWS Lambda proxies to the Digital Bible Platform v2 API
+(`dbt.io`), the GitHub Pages site and the Netlify site were shut down in November 2026. The `biblescout.app`
+domain is no longer owned by this project.
+
+The code stays here for reference. `index.html` and `service-worker.js` now hold a retirement notice and a
+self-removing service worker; the last working version of the app is commit `37cc3bf`.
 
 ## Screenshot
 ![image](https://github.com/ericop/bible-scout-app/assets/5218249/857874c6-14e9-471f-a96e-36a18896a6e1)
